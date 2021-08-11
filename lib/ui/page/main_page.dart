@@ -6,9 +6,7 @@ import 'package:kksi/ui/page/chat_page.dart';
 import 'package:kksi/ui/page/home_page.dart';
 import 'package:kksi/ui/page/profile_page.dart';
 import 'package:kksi/ui/page/tugas_page.dart';
-import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/ui/widget/custom_navigation_item.dart';
-import 'package:kksi/ui/widget/jurusan_item.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
