@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.schooldy">
+    package="com.example.kksi">
    <application
         android:label="Schooldy"
         android:icon="@mipmap/ic_launcher">

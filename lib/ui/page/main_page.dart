@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
         alignment: Alignment.bottomCenter,
         child: Container(
           width: double.infinity,
-          height: 50,
+          height: 60,
           margin: EdgeInsets.only(
             bottom: 25,
             right: defaultMargin,

@@ -149,6 +149,7 @@ class HomePage extends StatelessWidget {
       Widget section2() {
         return Container(
           width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width,
           padding: EdgeInsets.symmetric(
             horizontal: defaultMargin,
             vertical: 15,
@@ -166,7 +167,7 @@ class HomePage extends StatelessWidget {
               Text(
                 'Selalu ingat tentang jadwal pelajaran',
                 style: whiteTextStyle.copyWith(
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: semiBold,
                 ),
                 textAlign: TextAlign.center,
@@ -179,9 +180,9 @@ class HomePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'Catat hal hal penting di\nsetiap mata pelajaran\nyang kamu pelajari',
+                      'Catat hal hal penting di setiap mata pelajaran\nyang kamu pelajari',
                       style: whiteTextStyle.copyWith(
-                        fontSize: 12,
+                        fontSize: 16,
                         fontWeight: semiBold,
                       ),
                     ),
@@ -216,8 +217,8 @@ class HomePage extends StatelessWidget {
     Widget agenda() {
       return SizedBox.expand(
         child: DraggableScrollableSheet(
-          initialChildSize: 0.3,
-          minChildSize: 0.3,
+          initialChildSize: 0.35,
+          minChildSize: 0.35,
           maxChildSize: 0.6,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
