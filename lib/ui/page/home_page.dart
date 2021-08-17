@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
+import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
+import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
 
+import 'animation/custom_rect_tween.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -150,9 +156,11 @@ class HomePage extends StatelessWidget {
         return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-            vertical: 15,
+          padding: EdgeInsets.only(
+            top: 15,
+            right: defaultMargin,
+            left: defaultMargin,
+            bottom: 50,
           ),
           margin: EdgeInsets.only(top: 25),
           decoration: BoxDecoration(
@@ -182,14 +190,14 @@ class HomePage extends StatelessWidget {
                     child: Text(
                       'Catat hal hal penting di setiap mata pelajaran\nyang kamu pelajari',
                       style: whiteTextStyle.copyWith(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: semiBold,
                       ),
                     ),
                   ),
                   Container(
-                    width: 170,
-                    height: 170,
+                    width: 160,
+                    height: 160,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/image_home.png'),
@@ -217,9 +225,9 @@ class HomePage extends StatelessWidget {
     Widget agenda() {
       return SizedBox.expand(
         child: DraggableScrollableSheet(
-          initialChildSize: 0.35,
-          minChildSize: 0.35,
-          maxChildSize: 0.6,
+          initialChildSize: 0.3,
+          minChildSize: 0.3,
+          maxChildSize: 0.75,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
               decoration: BoxDecoration(
@@ -260,23 +268,9 @@ class HomePage extends StatelessWidget {
                   ),
 
                   // Item
-                  AgendaItem(
-                    profil: "SY",
-                    mapel: "Bahasa Indonesia",
-                    materi: "Teks Pidato",
-                    color: kDarkBlue,
-                  ),
-                  AgendaItem(
-                    profil: 'DS',
-                    mapel: "Basis Data",
-                    materi: "Subquery",
-                    color: Color(0xffFF738C),
-                  ),
-                  AgendaItem(
-                    profil: 'AE',
-                    mapel: "Matematika",
-                    materi: "Turunan",
-                    color: Color(0xff58A560),
+                  _AgendaItemLoop(),
+                  SizedBox(
+                    height: 100,
                   ),
                 ],
               ),
@@ -294,6 +288,132 @@ class HomePage extends StatelessWidget {
             botLayer(),
             agenda(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AgendaItemLoop extends StatelessWidget {
+  _AgendaItemLoop({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: fakedata.map((data) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              HeroDialogRoute(
+                builder: (context) => Center(
+                  child: _AgendaPopUpCard(
+                    aModels: data,
+                  ),
+                ),
+              ),
+            );
+          },
+          child: Hero(
+            tag: data.id,
+            createRectTween: (begin, end) {
+              return CustomRectTween(begin: begin, end: end);
+            },
+            child: AgendaItem(
+              id: data.id,
+              profil: data.guru,
+              mapel: data.mapel,
+              materi: data.materi,
+              color: data.warna,
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class _AgendaPopUpCard extends StatelessWidget {
+  const _AgendaPopUpCard({
+    Key? key,
+    required this.aModels,
+  }) : super(key: key);
+
+  final AgendaModels aModels;
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+      tag: aModels.id,
+      createRectTween: (begin, end) {
+        return CustomRectTween(begin: begin, end: end);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Material(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+          child: SizedBox(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          margin: EdgeInsets.only(right: 15),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: aModels.warna,
+                          ),
+                          child: Center(
+                            child: Text(
+                              aModels.guru,
+                              style: whiteTextStyle.copyWith(
+                                fontWeight: semiBold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              aModels.mapel,
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 18,
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              aModels.materi,
+                              style: blackTextStyle.copyWith(
+                                fontWeight: light,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    Divider(),
+                    Center(
+                      child: Text(aModels.waktu),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );

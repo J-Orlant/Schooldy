@@ -38,7 +38,7 @@ class TugasPage extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: Text(
-                        'DONE',
+                        'To-Do',
                         style: blueTextStyle.copyWith(
                           fontWeight: semiBold,
                           fontSize: 15,
@@ -59,7 +59,7 @@ class TugasPage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       );
