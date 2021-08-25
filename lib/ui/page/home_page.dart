@@ -4,6 +4,7 @@ import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'animation/custom_rect_tween.dart';
 
@@ -181,7 +182,7 @@ class HomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 33,
+                height: 28,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,20 +191,16 @@ class HomePage extends StatelessWidget {
                     child: Text(
                       'Catat hal hal penting di setiap mata pelajaran\nyang kamu pelajari',
                       style: whiteTextStyle.copyWith(
-                        fontSize: 15,
+                        fontSize: 16,
                         fontWeight: semiBold,
                       ),
                     ),
                   ),
-                  Container(
+                  Image.asset(
+                    'assets/image_home.png',
                     width: 160,
                     height: 160,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/image_home.png'),
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
             ],
@@ -334,17 +331,47 @@ class _AgendaItemLoop extends StatelessWidget {
   }
 }
 
-class _AgendaPopUpCard extends StatelessWidget {
+class _AgendaPopUpCard extends StatefulWidget {
   const _AgendaPopUpCard({
     Key? key,
     required this.aModels,
   }) : super(key: key);
 
   final AgendaModels aModels;
+
+  @override
+  __AgendaPopUpCardState createState() => __AgendaPopUpCardState();
+}
+
+class __AgendaPopUpCardState extends State<_AgendaPopUpCard> {
+  bool show = false;
   @override
   Widget build(BuildContext context) {
+    Widget link(show) {
+      if (show) {
+        return InkWell(
+          onTap: () async {
+            const url = 'https://meet.google.com/nmb-yakz-vxf';
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw 'Could not launch $url';
+            }
+          },
+          child: Text(
+            'https://meet.google.com/nmb-yakz-vxf',
+            style: blueTextStyle.copyWith(
+              color: Colors.blue,
+            ),
+          ),
+        );
+      } else {
+        return SizedBox();
+      }
+    }
+
     return Hero(
-      tag: aModels.id,
+      tag: widget.aModels.id,
       createRectTween: (begin, end) {
         return CustomRectTween(begin: begin, end: end);
       },
@@ -369,11 +396,11 @@ class _AgendaPopUpCard extends StatelessWidget {
                           margin: EdgeInsets.only(right: 15),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: aModels.warna,
+                            color: widget.aModels.warna,
                           ),
                           child: Center(
                             child: Text(
-                              aModels.guru,
+                              widget.aModels.guru,
                               style: whiteTextStyle.copyWith(
                                 fontWeight: semiBold,
                                 fontSize: 16,
@@ -385,7 +412,7 @@ class _AgendaPopUpCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              aModels.mapel,
+                              widget.aModels.mapel,
                               style: primaryTextStyle.copyWith(
                                 fontSize: 18,
                                 fontWeight: semiBold,
@@ -394,20 +421,59 @@ class _AgendaPopUpCard extends StatelessWidget {
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              aModels.materi,
-                              style: blackTextStyle.copyWith(
-                                fontWeight: light,
-                                fontSize: 14,
-                              ),
+                            Row(
+                              children: [
+                                Text(
+                                  'Suji Yuji S.pd ',
+                                  style: blackTextStyle.copyWith(
+                                    fontWeight: light,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  widget.aModels.materi,
+                                  style: blackTextStyle.copyWith(
+                                    fontWeight: bold,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         )
                       ],
                     ),
                     Divider(),
+                    link(show),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Opacity(
+                        opacity: (show) ? 0.50 : 1,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: kDarkBlue,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              show = true;
+                            });
+                          },
+                          child: Text(
+                            'Hadir',
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: semiBold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider(),
                     Center(
-                      child: Text(aModels.waktu),
+                      child: Text(widget.aModels.waktu),
                     )
                   ],
                 ),

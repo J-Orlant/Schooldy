@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/animation/custom_rect_tween.dart';
 
 class AgendaItem extends StatelessWidget {
   final String id;

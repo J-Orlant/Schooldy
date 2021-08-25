@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
+import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/ui/page/main_page.dart';
 import 'package:kksi/ui/page/sign_in_page.dart';
 import 'package:kksi/ui/page/splash_page.dart';
@@ -20,7 +21,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (BuildContext context) => PageCubit(),
-        )
+        ),
+        BlocProvider(
+          create: (BuildContext context) => TabCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

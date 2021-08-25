@@ -30,7 +30,13 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="https" />
             </intent-filter>
+            <!-- <intent>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="https" />
+            </intent> -->
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
