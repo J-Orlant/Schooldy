@@ -45,6 +45,7 @@ class SignInPage extends StatelessWidget {
                 style: primaryTextStyle.copyWith(
                   fontSize: 30,
                   fontWeight: semiBold,
+                  color: Color(0xff73A5FF),
                 ),
               ),
               SizedBox(
@@ -54,7 +55,7 @@ class SignInPage extends StatelessWidget {
                 hint: 'Email',
                 icon: Icon(
                   Icons.email,
-                  color: kPrimaryColor,
+                  color: Color(0xff73A5FF),
                 ),
               ),
               SizedBox(
@@ -64,7 +65,7 @@ class SignInPage extends StatelessWidget {
                 hint: 'Password',
                 icon: Icon(
                   Icons.lock,
-                  color: kPrimaryColor,
+                  color: Color(0xff73A5FF),
                 ),
               ),
 

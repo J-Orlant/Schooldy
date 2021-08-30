@@ -260,6 +260,9 @@ class TugasItem extends StatelessWidget {
                             )),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
               );

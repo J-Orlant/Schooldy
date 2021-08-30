@@ -8,10 +8,10 @@ class CustomTextButton extends StatelessWidget {
 
   const CustomTextButton({
     Key? key,
-      required this.margin, 
-      required this.title, 
-      required this.onPressed,
-    }) : super(key: key);
+    required this.margin,
+    required this.title,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          backgroundColor: kPrimaryColor,
+          backgroundColor: Color(0xff73A5FF),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40),
           ),

@@ -65,19 +65,24 @@ class HomePage extends StatelessWidget {
                     Positioned(
                       top: 1,
                       right: 1,
-                      child: Container(
-                        width: 22,
-                        height: 22,
-                        decoration: BoxDecoration(
-                          color: kWhiteColor,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: kPrimaryColor, width: 2),
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: greyTextStyle.copyWith(
-                              fontWeight: bold,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/notif');
+                        },
+                        child: Container(
+                          width: 22,
+                          height: 22,
+                          decoration: BoxDecoration(
+                            color: kWhiteColor,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: kPrimaryColor, width: 2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '2',
+                              style: greyTextStyle.copyWith(
+                                fontWeight: bold,
+                              ),
                             ),
                           ),
                         ),
@@ -301,17 +306,19 @@ class _AgendaItemLoop extends StatelessWidget {
     return Column(
       children: fakedata.map((data) {
         return GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              HeroDialogRoute(
-                builder: (context) => Center(
-                  child: _AgendaPopUpCard(
-                    aModels: data,
-                  ),
-                ),
-              ),
-            );
-          },
+          onTap: (!data.expired)
+              ? () {
+                  Navigator.of(context).push(
+                    HeroDialogRoute(
+                      builder: (context) => Center(
+                        child: _AgendaPopUpCard(
+                          aModels: data,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              : () {},
           child: Hero(
             tag: data.id,
             createRectTween: (begin, end) {
@@ -323,6 +330,7 @@ class _AgendaItemLoop extends StatelessWidget {
               mapel: data.mapel,
               materi: data.materi,
               color: data.warna,
+              expired: data.expired,
             ),
           ),
         );

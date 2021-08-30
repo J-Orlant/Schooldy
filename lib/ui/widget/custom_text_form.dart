@@ -11,18 +11,18 @@ class CustomTextForm extends StatelessWidget {
     required this.hint,
     this.obsecure = false,
     required this.icon,
-    }) : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: kWhiteColor,
       ),
       child: Material(
-        elevation: 2.0,
+        elevation: 1.0,
         shadowColor: kGreyColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -30,12 +30,12 @@ class CustomTextForm extends StatelessWidget {
         child: TextFormField(
           obscureText: obsecure,
           decoration: InputDecoration(
-              border: InputBorder.none,
-              fillColor: kWhiteColor,
-              contentPadding: EdgeInsets.symmetric(vertical: 12),
-              prefixIcon: icon,
-              hintText: hint,
-              hintStyle: greyTextStyle.copyWith(),
+            border: InputBorder.none,
+            fillColor: kWhiteColor,
+            contentPadding: EdgeInsets.symmetric(vertical: 20),
+            prefixIcon: icon,
+            hintText: hint,
+            hintStyle: greyTextStyle.copyWith(),
           ),
         ),
       ),

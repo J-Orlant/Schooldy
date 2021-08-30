@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/ui/page/main_page.dart';
+import 'package:kksi/ui/page/notification_page.dart';
 import 'package:kksi/ui/page/sign_in_page.dart';
 import 'package:kksi/ui/page/splash_page.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           ('/get-started'): (context) => GetStartedPage(),
           ('/sign-in'): (context) => SignInPage(),
           ('/main'): (context) => MainPage(),
+          ('/notif'): (context) => NotificationPage(),
         },
       ),
     );
