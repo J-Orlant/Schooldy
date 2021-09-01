@@ -7,6 +7,7 @@ Color kWhiteColor = Color(0xffFFFFFF);
 Color kGreyColor = Color(0xffc4c4c4);
 Color kBlackColor = Color(0xff000000);
 Color kTransparent = Colors.transparent;
+Color CreamColor = Color(0xffFFDAC4);
 
 double defaultMargin = 24.0;
 
