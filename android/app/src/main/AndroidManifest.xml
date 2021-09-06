@@ -30,8 +30,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="https" />
+                <!-- <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="https" /> -->
             </intent-filter>
             <!-- <intent>
                 <action android:name="android.intent.action.VIEW" />

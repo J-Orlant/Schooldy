@@ -33,6 +33,9 @@ class ChatPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                 child: Container(
+                  margin: EdgeInsets.only(
+                    bottom: 15,
+                  ),
                   height: 50,
                   child: TextFormField(
                     decoration: InputDecoration(
@@ -63,34 +66,28 @@ class ChatPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 16,
-              ),
+
               // TampilanChat(),
               TampilanChat(
                 profile: 'RN',
-                background: CreamColor,
+                background: kCreamColor,
                 username: 'Bu Rena',
                 pesan: 'Coek',
                 pesanMasuk: '2',
                 isMasuk: false,
                 isPanjang: false,
               ),
-              SizedBox(
-                height: 16,
-              ),
+
               TampilanChat(
                 profile: 'LS',
-                background: CreamColor,
+                background: kCreamColor,
                 username: 'Bu Lesa',
                 pesan: 'Selamat siang kevin tolong untuk segera...',
                 pesanMasuk: '2',
                 isMasuk: true,
                 isPanjang: true,
               ),
-              SizedBox(
-                height: 16,
-              ),
+
               TampilanChat(
                 profile: 'BB',
                 background: kPrimaryColor,
@@ -100,21 +97,17 @@ class ChatPage extends StatelessWidget {
                 isMasuk: true,
                 isPanjang: false,
               ),
-              SizedBox(
-                height: 16,
-              ),
+
               TampilanChat(
                 profile: 'AE',
-                background: CreamColor,
+                background: kCreamColor,
                 username: 'Bu Allea',
                 pesan: 'Selamat pagi ibu saya ingin bertanya tent...',
                 pesanMasuk: '2',
                 isMasuk: false,
                 isPanjang: true,
               ),
-              SizedBox(
-                height: 16,
-              ),
+
               TampilanChat(
                 profile: 'RY',
                 background: kPrimaryColor,
@@ -123,9 +116,6 @@ class ChatPage extends StatelessWidget {
                 pesanMasuk: '1',
                 isMasuk: true,
                 isPanjang: false,
-              ),
-              SizedBox(
-                height: 16,
               ),
             ],
           ),
@@ -156,74 +146,87 @@ class TampilanChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: defaultMargin,
+    return Container(
+      margin: EdgeInsets.only(
+        left: defaultMargin,
+        right: defaultMargin,
+        bottom: 10,
       ),
-      child: Row(
+      child: Column(
         children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: background,
-            ),
-            child: Center(
-              child: Text(
-                profile,
-                style: blackTextStyle.copyWith(
-                  fontWeight: semiBold,
-                  fontSize: 25,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 15,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+          Row(
             children: [
-              Text(
-                username,
-                style: blackTextStyle.copyWith(
-                  fontWeight: semiBold,
-                  fontSize: 15,
-                ),
-              ),
-              Text(
-                pesan,
-                style: blackTextStyle.copyWith(
-                  fontWeight: light,
-                  fontSize: isPanjang == true ? 12 : 13,
-                ),
-              ),
               Container(
-                width: 243,
-                height: 2,
-                color: kGreyColor,
-              ),
-            ],
-          ),
-          Spacer(),
-          Column(
-            children: [
-              Text(
-                '14.00',
-                style: blackTextStyle.copyWith(
-                  fontWeight: light,
-                  fontSize: 13,
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: background,
+                ),
+                child: Center(
+                  child: Text(
+                    profile,
+                    style: blackTextStyle.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ),
-              isMasuk == true
-                  ? ChatNumber(
-                      pesanMasuk: pesanMasuk,
-                    )
-                  : Text('')
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      username,
+                      style: blackTextStyle.copyWith(
+                        fontWeight: semiBold,
+                        fontSize: 15,
+                      ),
+                    ),
+                    Text(
+                      pesan,
+                      style: blackTextStyle.copyWith(
+                        fontWeight: light,
+                        fontSize: isPanjang == true ? 12 : 13,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    // Container(
+                    //   width: 243,
+                    //   height: 2,
+                    //   color: kGreyColor,
+                    // ),
+                  ],
+                ),
+              ),
+              // Spacer(),
+              Column(
+                children: [
+                  Text(
+                    '14.00',
+                    style: blackTextStyle.copyWith(
+                      fontWeight: light,
+                      fontSize: 13,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  isMasuk == true
+                      ? ChatNumber(
+                          pesanMasuk: pesanMasuk,
+                        )
+                      : Text('')
+                ],
+              ),
             ],
           ),
+          Divider(),
         ],
       ),
     );
@@ -239,8 +242,8 @@ class ChatNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 28,
-      height: 28,
+      width: 20,
+      height: 20,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: kPrimaryColor,

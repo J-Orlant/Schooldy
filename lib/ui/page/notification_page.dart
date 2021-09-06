@@ -4,7 +4,6 @@ import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/notification_item.dart';
 import 'package:kksi/ui/widget/tabbar-item.dart';
-import 'package:kksi/ui/widget/tugas_item.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({Key? key}) : super(key: key);
