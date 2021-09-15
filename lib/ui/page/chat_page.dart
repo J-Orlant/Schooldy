@@ -72,10 +72,11 @@ class ChatPage extends StatelessWidget {
                 profile: 'RN',
                 background: kCreamColor,
                 username: 'Bu Rena',
-                pesan: 'Coek',
+                pesan: 'Baik terimakasih bu',
                 pesanMasuk: '2',
                 isMasuk: false,
                 isPanjang: false,
+                onTap: () {},
               ),
 
               TampilanChat(
@@ -86,6 +87,7 @@ class ChatPage extends StatelessWidget {
                 pesanMasuk: '2',
                 isMasuk: true,
                 isPanjang: true,
+                onTap: () {},
               ),
 
               TampilanChat(
@@ -96,6 +98,7 @@ class ChatPage extends StatelessWidget {
                 pesanMasuk: '1',
                 isMasuk: true,
                 isPanjang: false,
+                onTap: () {},
               ),
 
               TampilanChat(
@@ -106,6 +109,7 @@ class ChatPage extends StatelessWidget {
                 pesanMasuk: '2',
                 isMasuk: false,
                 isPanjang: true,
+                onTap: () {},
               ),
 
               TampilanChat(
@@ -116,6 +120,9 @@ class ChatPage extends StatelessWidget {
                 pesanMasuk: '1',
                 isMasuk: true,
                 isPanjang: false,
+                onTap: () {
+                  Navigator.pushNamed(context, '/main');
+                },
               ),
             ],
           ),
@@ -133,6 +140,7 @@ class TampilanChat extends StatelessWidget {
   final String pesanMasuk;
   final bool isMasuk;
   final bool isPanjang;
+  final Function() onTap;
 
   TampilanChat({
     required this.profile,
@@ -142,6 +150,7 @@ class TampilanChat extends StatelessWidget {
     required this.pesanMasuk,
     required this.isMasuk,
     required this.isPanjang,
+    required this.onTap,
   });
 
   @override
@@ -154,77 +163,82 @@ class TampilanChat extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: background,
-                ),
-                child: Center(
-                  child: Text(
-                    profile,
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
-                      fontSize: 20,
-                    ),
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, '/room-chat');
+            },
+            child: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: background,
                   ),
-                ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      username,
+                  child: Center(
+                    child: Text(
+                      profile,
                       style: blackTextStyle.copyWith(
                         fontWeight: semiBold,
-                        fontSize: 15,
+                        fontSize: 20,
                       ),
                     ),
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        username,
+                        style: blackTextStyle.copyWith(
+                          fontWeight: semiBold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        pesan,
+                        style: blackTextStyle.copyWith(
+                          fontWeight: light,
+                          fontSize: isPanjang == true ? 12 : 13,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      // Container(
+                      //   width: 243,
+                      //   height: 2,
+                      //   color: kGreyColor,
+                      // ),
+                    ],
+                  ),
+                ),
+                // Spacer(),
+                Column(
+                  children: [
                     Text(
-                      pesan,
+                      '14.00',
                       style: blackTextStyle.copyWith(
                         fontWeight: light,
-                        fontSize: isPanjang == true ? 12 : 13,
+                        fontSize: 13,
                       ),
-                      overflow: TextOverflow.ellipsis,
                     ),
-                    // Container(
-                    //   width: 243,
-                    //   height: 2,
-                    //   color: kGreyColor,
-                    // ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    isMasuk == true
+                        ? ChatNumber(
+                            pesanMasuk: pesanMasuk,
+                          )
+                        : Text('')
                   ],
                 ),
-              ),
-              // Spacer(),
-              Column(
-                children: [
-                  Text(
-                    '14.00',
-                    style: blackTextStyle.copyWith(
-                      fontWeight: light,
-                      fontSize: 13,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  isMasuk == true
-                      ? ChatNumber(
-                          pesanMasuk: pesanMasuk,
-                        )
-                      : Text('')
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
           Divider(),
         ],
