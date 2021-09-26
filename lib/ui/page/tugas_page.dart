@@ -166,6 +166,7 @@ class __TodoSectionState extends State<_TodoSection> {
                     TugasItemTitle(
                       mapel: 'Matematika',
                       logo: 'assets/icon_math.png',
+                      isClicked: !_first,
                       onPressed: () {
                         setState(() {
                           _first = !_first;
@@ -200,6 +201,7 @@ class __TodoSectionState extends State<_TodoSection> {
                       ),
                       mapel: 'Bahasa Indonesia',
                       logo: 'assets/icon_bindo.png',
+                      isClicked: !_second,
                       onPressed: () {
                         setState(() {
                           _second = !_second;
@@ -313,6 +315,7 @@ class __DoneSectionState extends State<_DoneSection> {
                     TugasItemTitle(
                       mapel: 'Matematika',
                       logo: 'assets/icon_math.png',
+                      isClicked: !_first,
                       onPressed: () {
                         setState(() {
                           _first = !_first;
@@ -348,6 +351,7 @@ class __DoneSectionState extends State<_DoneSection> {
                       ),
                       mapel: 'Bahasa Indonesia',
                       logo: 'assets/icon_bindo.png',
+                      isClicked: !_second,
                       onPressed: () {
                         setState(() {
                           _second = !_second;

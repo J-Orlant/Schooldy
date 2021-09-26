@@ -5,12 +5,14 @@ class TugasItemTitle extends StatelessWidget {
   final String mapel;
   final String logo;
   final EdgeInsets margin;
+  final bool isClicked;
   final Function() onPressed;
   const TugasItemTitle({
     required this.mapel,
     required this.logo,
     this.margin = EdgeInsets.zero,
     required this.onPressed,
+    this.isClicked = false,
     Key? key,
   }) : super(key: key);
 
@@ -52,7 +54,7 @@ class TugasItemTitle extends StatelessWidget {
           IconButton(
             onPressed: onPressed,
             icon: Icon(
-              Icons.keyboard_arrow_down,
+              (isClicked) ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
               size: 35,
             ),
           ),

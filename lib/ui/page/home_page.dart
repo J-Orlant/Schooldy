@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                     'KS',
                     style: primaryTextStyle.copyWith(
                       fontWeight: semiBold,
-                      fontSize: 25,
+                      fontSize: 22,
                     ),
                   ),
                 ),
@@ -353,6 +353,7 @@ class _AgendaPopUpCard extends StatefulWidget {
 
 class __AgendaPopUpCardState extends State<_AgendaPopUpCard> {
   bool show = false;
+
   @override
   Widget build(BuildContext context) {
     Widget link(show) {
@@ -472,7 +473,6 @@ class __AgendaPopUpCardState extends State<_AgendaPopUpCard> {
                           child: Text(
                             'Hadir',
                             style: whiteTextStyle.copyWith(
-                              fontSize: 15,
                               fontWeight: semiBold,
                             ),
                           ),
