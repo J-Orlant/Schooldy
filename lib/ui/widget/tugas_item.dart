@@ -188,6 +188,9 @@ class TugasItem extends StatelessWidget {
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                   ],
                                 ),
                                 Positioned(
@@ -195,6 +198,7 @@ class TugasItem extends StatelessWidget {
                                   right: -10,
                                   child: IconButton(
                                     icon: Icon(Icons.close),
+                                    color: kBlackColor.withOpacity(0.5),
                                     onPressed: () {},
                                   ),
                                 ),
