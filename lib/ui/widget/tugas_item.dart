@@ -278,7 +278,7 @@ class TugasItem extends StatelessWidget {
         ),
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: 8,
+            horizontal: 10,
             vertical: 15,
           ),
           decoration: BoxDecoration(
@@ -294,7 +294,7 @@ class TugasItem extends StatelessWidget {
                     Container(
                       width: 30,
                       height: 30,
-                      margin: EdgeInsets.only(right: 8),
+                      margin: EdgeInsets.only(right: 12),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: kDarkBlue,

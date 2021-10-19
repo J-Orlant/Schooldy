@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'animation/custom_rect_tween.dart';
@@ -27,8 +29,8 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: 50,
-                height: 50,
+                width: 48,
+                height: 48,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: kWhiteColor,
@@ -38,7 +40,7 @@ class HomePage extends StatelessWidget {
                     'KS',
                     style: primaryTextStyle.copyWith(
                       fontWeight: semiBold,
-                      fontSize: 22,
+                      fontSize: 19,
                     ),
                   ),
                 ),
@@ -161,11 +163,9 @@ class HomePage extends StatelessWidget {
       Widget section2() {
         return Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width - 20,
           padding: EdgeInsets.only(
             top: 15,
-            right: defaultMargin,
-            left: defaultMargin,
             bottom: 50,
           ),
           margin: EdgeInsets.only(top: 25),
@@ -178,36 +178,36 @@ class HomePage extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Text(
-                'Selalu ingat tentang jadwal pelajaran',
-                style: whiteTextStyle.copyWith(
-                  fontSize: 18,
-                  fontWeight: semiBold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 28,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Catat hal hal penting di setiap mata pelajaran\nyang kamu pelajari',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 16,
-                        fontWeight: semiBold,
-                      ),
-                    ),
-                  ),
-                  Image.asset(
-                    'assets/image_home.png',
-                    width: 160,
-                    height: 160,
-                  )
-                ],
-              ),
+              // Text(
+              //   'Selalu ingat tentang jadwal pelajaran',
+              //   style: whiteTextStyle.copyWith(
+              //     fontSize: 18,
+              //     fontWeight: semiBold,
+              //   ),
+              //   textAlign: TextAlign.center,
+              // ),
+              // SizedBox(
+              //   height: 28,
+              // ),
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Expanded(
+              //       child: Text(
+              //         'Catat hal hal penting di setiap mata pelajaran\nyang kamu pelajari',
+              //         style: whiteTextStyle.copyWith(
+              //           fontSize: 16,
+              //           fontWeight: semiBold,
+              //         ),
+              //       ),
+              //     ),
+              //     Image.asset(
+              //       'assets/image_home.png',
+              //       width: 160,
+              //       height: 160,
+              //     )
+              //   ],
+              // ),
             ],
           ),
         );
@@ -303,38 +303,45 @@ class _AgendaItemLoop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: fakedata.map((data) {
-        return GestureDetector(
-          onTap: (!data.expired)
-              ? () {
-                  Navigator.of(context).push(
-                    HeroDialogRoute(
-                      builder: (context) => Center(
-                        child: _AgendaPopUpCard(
-                          aModels: data,
-                        ),
-                      ),
-                    ),
-                  );
-                }
-              : () {},
-          child: Hero(
-            tag: data.id,
-            createRectTween: (begin, end) {
-              return CustomRectTween(begin: begin, end: end);
-            },
-            child: AgendaItem(
-              id: data.id,
-              profil: data.guru,
-              mapel: data.mapel,
-              materi: data.materi,
-              color: data.warna,
-              expired: data.expired,
+    return Consumer<Absensi>(
+      builder: (context, absensi, _) => Column(
+        children: fakedata.map((data) {
+          return Consumer<Absensi>(
+            builder: (context, absensi, _) => GestureDetector(
+              onTap: (absensi.isAbsen == false)
+                  ? (data.expired == false) // at first false
+                      ? () {
+                          Navigator.of(context).push(
+                            HeroDialogRoute(
+                              builder: (context) => Center(
+                                child: _AgendaPopUpCard(
+                                  aModels: data,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                      : () {}
+                  : () {},
+              child: Hero(
+                tag: data.id,
+                createRectTween: (begin, end) {
+                  return CustomRectTween(begin: begin, end: end);
+                },
+                child: AgendaItem(
+                  id: data.id,
+                  profil: data.guru,
+                  mapel: data.mapel,
+                  materi: data.materi,
+                  color: data.warna,
+                  expired:
+                      (absensi.id == data.id) ? absensi.isAbsen : data.expired,
+                ),
+              ),
             ),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
+      ),
     );
   }
 }
@@ -461,19 +468,23 @@ class __AgendaPopUpCardState extends State<_AgendaPopUpCard> {
                       alignment: Alignment.centerRight,
                       child: Opacity(
                         opacity: (show) ? 0.50 : 1,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: kDarkBlue,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              show = true;
-                            });
-                          },
-                          child: Text(
-                            'Hadir',
-                            style: whiteTextStyle.copyWith(
-                              fontWeight: semiBold,
+                        child: Consumer<Absensi>(
+                          builder: (context, absensi, _) => TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: kDarkBlue,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                show = true;
+                              });
+                              absensi.isAbsen = true;
+                              absensi.id = widget.aModels.id;
+                            },
+                            child: Text(
+                              'Hadir',
+                              style: whiteTextStyle.copyWith(
+                                fontWeight: semiBold,
+                              ),
                             ),
                           ),
                         ),

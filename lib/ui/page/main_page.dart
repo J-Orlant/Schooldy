@@ -41,21 +41,20 @@ class _MainPageState extends State<MainPage> {
           height: 60,
           margin: EdgeInsets.only(
             bottom: 25,
-            right: defaultMargin,
-            left: defaultMargin,
+            right: 70,
+            left: 70,
           ),
           padding: EdgeInsets.symmetric(
-            horizontal: 10,
+            horizontal: 12,
           ),
           decoration: BoxDecoration(
             color: kWhiteColor,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 7,
-                offset: Offset(0, 4), // changes position of shadow
+                color: Colors.black.withOpacity(0.25),
+                blurRadius: 5,
+                offset: Offset(0, 1), // changes position of shadow
               ),
             ],
           ),
@@ -64,18 +63,22 @@ class _MainPageState extends State<MainPage> {
             children: [
               CustomNavigationItem(
                 icon: 'assets/icon_home.png',
+                title: 'Home',
                 index: 0,
               ),
               CustomNavigationItem(
                 icon: 'assets/icon_tugas.png',
+                title: 'Tugas',
                 index: 1,
               ),
               CustomNavigationItem(
                 icon: 'assets/icon_chat.png',
+                title: 'Chat',
                 index: 2,
               ),
               CustomNavigationItem(
                 icon: 'assets/icon_profile.png',
+                title: 'Profile',
                 index: 3,
               ),
             ],

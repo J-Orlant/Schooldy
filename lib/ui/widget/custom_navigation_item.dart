@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomNavigationItem extends StatelessWidget {
   final String icon;
+  final String title;
   final int index;
   const CustomNavigationItem({
     Key? key,
     required this.index,
+    required this.title,
     required this.icon,
   }) : super(key: key);
 
@@ -30,12 +32,15 @@ class CustomNavigationItem extends StatelessWidget {
                 ? kDarkBlue
                 : kGreyColor,
           ),
-          Container(
-            width: 30,
-            height: 2,
-            color: (context.read<PageCubit>().state == index)
-                ? kDarkBlue
-                : kTransparent,
+          Text(
+            title,
+            style: blueTextStyle.copyWith(
+              color: (context.read<PageCubit>().state == index)
+                  ? kDarkBlue
+                  : kGreyColor,
+              fontWeight: medium,
+              fontSize: 10,
+            ),
           ),
         ],
       ),
