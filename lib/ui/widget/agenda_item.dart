@@ -65,7 +65,7 @@ class AgendaItem extends StatelessWidget {
                       Text(
                         mapel,
                         style: primaryTextStyle.copyWith(
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: semiBold,
                         ),
                       ),
@@ -75,7 +75,8 @@ class AgendaItem extends StatelessWidget {
                       Text(
                         materi,
                         style: blackTextStyle.copyWith(
-                          fontWeight: light,
+                          fontSize: 12,
+                          fontWeight: medium,
                         ),
                       ),
                     ],

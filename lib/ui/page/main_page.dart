@@ -41,8 +41,8 @@ class _MainPageState extends State<MainPage> {
           height: 60,
           margin: EdgeInsets.only(
             bottom: 25,
-            right: 70,
-            left: 70,
+            right: 28,
+            left: 28,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: 12,

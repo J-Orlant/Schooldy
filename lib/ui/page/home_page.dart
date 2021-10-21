@@ -7,7 +7,7 @@ import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'animation/custom_rect_tween.dart';
 
 class HomePage extends StatelessWidget {
@@ -84,6 +84,7 @@ class HomePage extends StatelessWidget {
                               '2',
                               style: greyTextStyle.copyWith(
                                 fontWeight: bold,
+                                fontSize: 13,
                               ),
                             ),
                           ),
@@ -164,9 +165,9 @@ class HomePage extends StatelessWidget {
         return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.width - 20,
-          padding: EdgeInsets.only(
-            top: 15,
-            bottom: 50,
+          padding: EdgeInsets.symmetric(
+            vertical: 14,
+            horizontal: 23,
           ),
           margin: EdgeInsets.only(top: 25),
           decoration: BoxDecoration(
@@ -177,37 +178,163 @@ class HomePage extends StatelessWidget {
             ),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Text(
-              //   'Selalu ingat tentang jadwal pelajaran',
-              //   style: whiteTextStyle.copyWith(
-              //     fontSize: 18,
-              //     fontWeight: semiBold,
-              //   ),
-              //   textAlign: TextAlign.center,
-              // ),
-              // SizedBox(
-              //   height: 28,
-              // ),
-              // Row(
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-              //     Expanded(
-              //       child: Text(
-              //         'Catat hal hal penting di setiap mata pelajaran\nyang kamu pelajari',
-              //         style: whiteTextStyle.copyWith(
-              //           fontSize: 16,
-              //           fontWeight: semiBold,
-              //         ),
-              //       ),
-              //     ),
-              //     Image.asset(
-              //       'assets/image_home.png',
-              //       width: 160,
-              //       height: 160,
-              //     )
-              //   ],
-              // ),
+              Text(
+                'Statistik Tugas',
+                style: whiteTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Flexible(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            CircularPercentIndicator(
+                              radius: 80.0,
+                              lineWidth: 8,
+                              animation: true,
+                              animationDuration: 800,
+                              percent: 70 / 100,
+                              backgroundColor: kWhiteColor.withOpacity(0.5),
+                              progressColor: kWhiteColor,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              center: Text(
+                                '70%',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              'To-Do',
+                              style: whiteTextStyle.copyWith(
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 26,
+                        ),
+                        Column(
+                          children: [
+                            CircularPercentIndicator(
+                              radius: 80.0,
+                              lineWidth: 8,
+                              animation: true,
+                              animationDuration: 800,
+                              percent: 30 / 100,
+                              backgroundColor: kWhiteColor.withOpacity(0.5),
+                              progressColor: Color(0xffDF7D7D),
+                              circularStrokeCap: CircularStrokeCap.round,
+                              center: Text(
+                                '30%',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              'Missing',
+                              style: whiteTextStyle.copyWith(
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height: 34,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kWhiteColor,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '40',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Completed',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 10,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 44,
+                        margin: EdgeInsets.only(
+                          top: 28,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kWhiteColor,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '120',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Homework',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 10,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         );
@@ -227,8 +354,8 @@ class HomePage extends StatelessWidget {
     Widget agenda() {
       return SizedBox.expand(
         child: DraggableScrollableSheet(
-          initialChildSize: 0.3,
-          minChildSize: 0.3,
+          initialChildSize: 0.35,
+          minChildSize: 0.35,
           maxChildSize: 0.75,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
@@ -262,7 +389,7 @@ class HomePage extends StatelessWidget {
                     'Senin, 09 Agustus',
                     style: blackTextStyle.copyWith(
                       fontWeight: semiBold,
-                      fontSize: 18,
+                      fontSize: 17,
                     ),
                   ),
                   SizedBox(

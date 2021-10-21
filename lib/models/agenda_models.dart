@@ -27,7 +27,7 @@ final fakedata = [
     mapel: 'Bahasa Indonesia',
     materi: 'Teks Pidato',
     guru: 'SY',
-    warna: kPrimaryColor,
+    warna: kDarkBlue,
     expired: false,
   ),
   AgendaModels(

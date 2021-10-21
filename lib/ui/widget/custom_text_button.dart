@@ -17,12 +17,12 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 55,
+      height: 50,
       margin: margin,
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          backgroundColor: Color(0xff73A5FF),
+          backgroundColor: kDarkBlue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40),
           ),

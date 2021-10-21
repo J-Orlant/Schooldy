@@ -25,6 +25,12 @@ class _RoomChatState extends State<RoomChat> {
       return AppBar(
         backgroundColor: kPrimaryColor,
         centerTitle: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Row(
           children: [
             Container(

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
+import 'package:kksi/ui/page/animation/custom_rect_tween.dart';
+import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -20,15 +22,48 @@ class ChatPage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(
                     left: defaultMargin,
+                    right: defaultMargin,
                     top: 22,
                     bottom: 13,
                   ),
-                  child: Text(
-                    'Chat',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 18,
-                      fontWeight: semiBold,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Chat',
+                        style: blackTextStyle.copyWith(
+                          fontSize: 18,
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(HeroDialogRoute(
+                            builder: (context) => Center(
+                              child: ChatPopUp(),
+                            ),
+                          ));
+                        },
+                        child: Hero(
+                          tag: 'chat-pop',
+                          child: Container(
+                            width: 26,
+                            height: 26,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: kDarkBlue,
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.add,
+                                size: 16,
+                                color: kWhiteColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 // Bagian SEARCH
@@ -38,7 +73,7 @@ class ChatPage extends StatelessWidget {
                     margin: EdgeInsets.only(
                       bottom: 15,
                     ),
-                    height: 50,
+                    height: 40,
                     child: TextFormField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(
@@ -271,6 +306,80 @@ class ChatNumber extends StatelessWidget {
           style: whiteTextStyle.copyWith(
             fontWeight: semiBold,
             fontSize: 13,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChatPopUp extends StatefulWidget {
+  const ChatPopUp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _ChatPopUpState createState() => _ChatPopUpState();
+}
+
+class _ChatPopUpState extends State<ChatPopUp> {
+  bool show = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+      tag: 'chat-pop',
+      createRectTween: (begin, end) {
+        return CustomRectTween(begin: begin, end: end);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Material(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+          child: SizedBox(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Pilih Kontak',
+                            style: primaryTextStyle,
+                          ),
+                        ),
+                        GestureDetector(
+                          child: Icon(
+                            Icons.search,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 24,
+                        ),
+                        GestureDetector(
+                          child: Icon(
+                            Icons.more_vert,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    color: kPrimaryColor,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 29,
+                      vertical: 25,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
