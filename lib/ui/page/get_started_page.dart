@@ -20,6 +20,12 @@ class _GetStartedPageState extends State<GetStartedPage> {
   }
 
   @override
+  void dispose() {
+    this.carouselController;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Widget skipButton() {
       return GestureDetector(

@@ -7,7 +7,7 @@ class AgendaItem extends StatelessWidget {
   final String mapel;
   final String materi;
   final Color color;
-  final bool expired;
+  final String status;
 
   const AgendaItem({
     Key? key,
@@ -16,79 +16,108 @@ class AgendaItem extends StatelessWidget {
     required this.mapel,
     required this.materi,
     required this.color,
-    required this.expired,
+    required this.status,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: (expired) ? 0.5 : 1.0,
-      child: Material(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 12),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: Color(0xffC4C4C4).withOpacity(0.5),
-                width: 2,
-              ),
+      opacity: (status == 'mendatang' || status == 'alpha') ? 0.5 : 1.0,
+      child: Container(
+        margin: EdgeInsets.only(
+          bottom: 0,
+        ),
+        child: Material(
+          color: (status == 'absen') ? kDarkBlue : kWhiteColor,
+          borderRadius: BorderRadius.circular(5),
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 12,
+              right: defaultMargin,
+              left: defaultMargin,
             ),
-          ),
-          child: SingleChildScrollView(
-            child: Row(
-              children: [
-                // NOTE: Profil
-                Container(
-                  width: 50,
-                  height: 50,
-                  margin: EdgeInsets.only(right: 15),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color,
-                  ),
-                  child: Center(
-                    child: Text(
-                      profil,
-                      style: whiteTextStyle.copyWith(
-                        fontWeight: semiBold,
-                        fontSize: 16,
-                      ),
+            child: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                  bottom: 10,
+                ),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Color(0xffC4C4C4).withOpacity(0.5),
+                      width: 2,
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        mapel,
-                        style: primaryTextStyle.copyWith(
-                          fontSize: 15,
-                          fontWeight: semiBold,
+                child: Row(
+                  children: [
+                    // NOTE: Profil
+                    Container(
+                      width: 50,
+                      height: 50,
+                      margin: EdgeInsets.only(right: 15),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: color,
+                      ),
+                      child: Center(
+                        child: Text(
+                          profil,
+                          style: whiteTextStyle.copyWith(
+                            fontWeight: semiBold,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: 4,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            mapel,
+                            style: primaryTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: semiBold,
+                              color: (status == 'absen')
+                                  ? kWhiteColor
+                                  : (status == 'alpha')
+                                      ? Color(0xffFF738C)
+                                      : kPrimaryColor,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            materi,
+                            style: blackTextStyle.copyWith(
+                              fontSize: 12,
+                              fontWeight: medium,
+                              color: (status == 'absen')
+                                  ? kWhiteColor
+                                  : (status == 'alpha')
+                                      ? Color(0xffFF738C)
+                                      : kBlackColor,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        materi,
-                        style: blackTextStyle.copyWith(
-                          fontSize: 12,
-                          fontWeight: medium,
-                        ),
+                    ),
+                    Text(
+                      '9:00 - 10.30',
+                      style: greyTextStyle.copyWith(
+                        fontSize: 12,
+                        color: (status == 'absen')
+                            ? kWhiteColor
+                            : (status == 'alpha')
+                                ? Color(0xffFF738C)
+                                : kGreyColor,
                       ),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-                Text(
-                  '9:00 - 10.30',
-                  style: greyTextStyle.copyWith(
-                    fontSize: 12,
-                  ),
-                )
-              ],
+              ),
             ),
           ),
         ),

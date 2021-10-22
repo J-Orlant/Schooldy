@@ -2,83 +2,111 @@ import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
 
 class JadwalItem extends StatelessWidget {
-  final String hari;
-  final List<String> mapel;
-  final List<String> waktu;
-  final Color color;
+  final String gambar;
+  final String mapel;
+  final String guru;
+  final int tugas;
+  final String waktu;
+
   const JadwalItem({
-    required this.hari,
+    required this.gambar,
     required this.mapel,
-    this.waktu = const [
-      '07.00 - 08.30',
-      '08.45 - 10.15',
-      '10.30 - 12.00',
-    ],
-    this.color = const Color(0xffF5F5DC),
+    required this.guru,
+    required this.tugas,
+    required this.waktu,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        bottom: 15,
+      width: 327,
+      height: 170,
+      padding: EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 24,
       ),
-      width: double.infinity,
+      margin: EdgeInsets.only(
+        bottom: 28,
+      ),
+      decoration: BoxDecoration(
+        color: kDarkBlue,
+        image: DecorationImage(
+          image: AssetImage('assets/image_card_jadwal.png'),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: 50,
-            child: Text(
-              hari,
-              style: blackTextStyle.copyWith(
-                fontSize: 13,
-                fontWeight: semiBold,
-              ),
-            ),
+          Image.asset(
+            gambar,
+            width: 136,
+          ),
+          SizedBox(
+            width: 16,
           ),
           Expanded(
-            child: Container(
-              margin: EdgeInsets.only(
-                left: 15,
-              ),
-              padding: EdgeInsets.all(13),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: color,
-              ),
-              child: Column(
-                children: mapel.map((data) {
-                  int index = mapel.indexOf(data);
-                  return Container(
-                    margin: EdgeInsets.only(
-                      bottom: (index == mapel.length - 1) ? 0 : 8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  mapel,
+                  style: whiteTextStyle.copyWith(
+                    fontWeight: semiBold,
+                    fontSize: 13,
+                  ),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'Create by $guru',
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 10,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/logo_jadwal_tugas.png',
+                      width: 16,
                     ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            data,
-                            style: blackTextStyle.copyWith(
-                              fontWeight: medium,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          waktu[index],
-                          style: greyTextStyle.copyWith(
-                            fontSize: 11,
-                          ),
-                        ),
-                      ],
+                    SizedBox(
+                      width: 8,
                     ),
-                  );
-                }).toList(),
-              ),
+                    Text(
+                      tugas.toString() + ' Tugas',
+                      style: whiteTextStyle.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/logo_jadwal_waktu.png',
+                      width: 16,
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      waktu,
+                      style: whiteTextStyle.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
+          )
         ],
       ),
     );

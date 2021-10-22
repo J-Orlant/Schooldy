@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
 class Absensi with ChangeNotifier {
-  bool _isAbsen = false;
+  String _isAbsen = 'avaible';
   String _id = '';
 
-  bool get isAbsen => _isAbsen;
+  String get isAbsen => _isAbsen;
   String get id => _id;
 
-  set isAbsen(bool value) {
+  set isAbsen(String value) {
     _isAbsen = value;
     notifyListeners();
   }

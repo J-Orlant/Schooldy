@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
@@ -190,150 +192,155 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  Flexible(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+              GestureDetector(
+                onTap: () {
+                  BlocProvider.of<PageCubit>(context).setPage(1);
+                },
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              CircularPercentIndicator(
+                                radius: 80.0,
+                                lineWidth: 8,
+                                animation: true,
+                                animationDuration: 800,
+                                percent: 70 / 100,
+                                backgroundColor: kWhiteColor.withOpacity(0.5),
+                                progressColor: kWhiteColor,
+                                circularStrokeCap: CircularStrokeCap.round,
+                                center: Text(
+                                  '70%',
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: semiBold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Text(
+                                'To-Do',
+                                style: whiteTextStyle.copyWith(
+                                  fontWeight: medium,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 26,
+                          ),
+                          Column(
+                            children: [
+                              CircularPercentIndicator(
+                                radius: 80.0,
+                                lineWidth: 8,
+                                animation: true,
+                                animationDuration: 800,
+                                percent: 30 / 100,
+                                backgroundColor: kWhiteColor.withOpacity(0.5),
+                                progressColor: Color(0xffDF7D7D),
+                                circularStrokeCap: CircularStrokeCap.round,
+                                center: Text(
+                                  '30%',
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: semiBold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Text(
+                                'Missing',
+                                style: whiteTextStyle.copyWith(
+                                  fontWeight: medium,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
                       children: [
-                        Column(
-                          children: [
-                            CircularPercentIndicator(
-                              radius: 80.0,
-                              lineWidth: 8,
-                              animation: true,
-                              animationDuration: 800,
-                              percent: 70 / 100,
-                              backgroundColor: kWhiteColor.withOpacity(0.5),
-                              progressColor: kWhiteColor,
-                              circularStrokeCap: CircularStrokeCap.round,
-                              center: Text(
-                                '70%',
-                                style: whiteTextStyle.copyWith(
+                        Container(
+                          height: 34,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: kWhiteColor,
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                '40',
+                                style: blackTextStyle.copyWith(
                                   fontSize: 16,
                                   fontWeight: semiBold,
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              'To-Do',
-                              style: whiteTextStyle.copyWith(
-                                fontWeight: medium,
+                              SizedBox(
+                                width: 15,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Completed',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: medium,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          width: 26,
-                        ),
-                        Column(
-                          children: [
-                            CircularPercentIndicator(
-                              radius: 80.0,
-                              lineWidth: 8,
-                              animation: true,
-                              animationDuration: 800,
-                              percent: 30 / 100,
-                              backgroundColor: kWhiteColor.withOpacity(0.5),
-                              progressColor: Color(0xffDF7D7D),
-                              circularStrokeCap: CircularStrokeCap.round,
-                              center: Text(
-                                '30%',
-                                style: whiteTextStyle.copyWith(
+                        Container(
+                          height: 44,
+                          margin: EdgeInsets.only(
+                            top: 28,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: kWhiteColor,
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                '120',
+                                style: blackTextStyle.copyWith(
                                   fontSize: 16,
                                   fontWeight: semiBold,
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              'Missing',
-                              style: whiteTextStyle.copyWith(
-                                fontWeight: medium,
+                              SizedBox(
+                                width: 15,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Homework',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: medium,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        height: 34,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: kWhiteColor,
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              '40',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: semiBold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              'Completed',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 10,
-                                fontWeight: medium,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 44,
-                        margin: EdgeInsets.only(
-                          top: 28,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: kWhiteColor,
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              '120',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: semiBold,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              'Homework',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 10,
-                                fontWeight: medium,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -370,8 +377,6 @@ class HomePage extends StatelessWidget {
                 controller: scrollController,
                 padding: EdgeInsets.only(
                   top: 10,
-                  right: defaultMargin,
-                  left: defaultMargin,
                 ),
                 children: [
                   Center(
@@ -385,11 +390,17 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    'Senin, 09 Agustus',
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
-                      fontSize: 17,
+                  Container(
+                    padding: EdgeInsets.only(
+                      right: defaultMargin,
+                      left: defaultMargin,
+                    ),
+                    child: Text(
+                      'Senin, 09 Agustus',
+                      style: blackTextStyle.copyWith(
+                        fontWeight: semiBold,
+                        fontSize: 17,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -435,8 +446,8 @@ class _AgendaItemLoop extends StatelessWidget {
         children: fakedata.map((data) {
           return Consumer<Absensi>(
             builder: (context, absensi, _) => GestureDetector(
-              onTap: (absensi.isAbsen == false)
-                  ? (data.expired == false) // at first false
+              onTap: (absensi.isAbsen == 'avaible')
+                  ? (data.status == 'avaible') // at first false
                       ? () {
                           Navigator.of(context).push(
                             HeroDialogRoute(
@@ -461,8 +472,9 @@ class _AgendaItemLoop extends StatelessWidget {
                   mapel: data.mapel,
                   materi: data.materi,
                   color: data.warna,
-                  expired:
-                      (absensi.id == data.id) ? absensi.isAbsen : data.expired,
+                  status: (absensi.id == data.id)
+                      ? absensi.isAbsen.toString()
+                      : data.status,
                 ),
               ),
             ),
@@ -604,7 +616,7 @@ class __AgendaPopUpCardState extends State<_AgendaPopUpCard> {
                               setState(() {
                                 show = true;
                               });
-                              absensi.isAbsen = true;
+                              absensi.isAbsen = 'absen';
                               absensi.id = widget.aModels.id;
                             },
                             child: Text(

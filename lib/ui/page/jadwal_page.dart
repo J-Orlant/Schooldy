@@ -1,18 +1,40 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:kksi/models/jadwal_model.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/jadwal_item.dart';
 
-class JadwalPage extends StatelessWidget {
+class JadwalPage extends StatefulWidget {
   const JadwalPage({Key? key}) : super(key: key);
 
   @override
+  State<JadwalPage> createState() => _JadwalPageState();
+}
+
+class _JadwalPageState extends State<JadwalPage> {
+  final CarouselController? carouselController = new CarouselController();
+  int _currentIndex = 0;
+  List hari = [
+    'Senin',
+    'Selasa',
+  ];
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    Widget appbar() {
+      return AppBar(
         backgroundColor: kWhiteColor,
         iconTheme: IconThemeData(
           color: kBlackColor,
         ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
+        ),
+        elevation: 0,
         title: Text(
           'JadwaL Pelajaran',
           style: blackTextStyle.copyWith(
@@ -21,58 +43,138 @@ class JadwalPage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-      ),
-      body: ListView(
-        padding: EdgeInsets.only(
-          top: 21,
-          left: 20,
-          right: 12,
+      );
+    }
+
+    Widget indicator() {
+      return Container(
+        margin: EdgeInsets.only(
+          bottom: 31,
         ),
-        children: [
-          JadwalItem(
-            hari: 'Senin',
-            mapel: [
-              'PBO',
-              'PJOK',
-              'PPKN',
-            ],
-          ),
-          JadwalItem(
-            hari: 'Selasa',
-            mapel: [
-              'KWU',
-              'PABP',
-              'BASDAT',
-            ],
-            color: Color(0xffF0F8FF),
-          ),
-          JadwalItem(
-            hari: 'Rabu',
-            mapel: [
-              'PWPB',
-              'Bahasa Indonesia',
-              'Android',
-            ],
-          ),
-          JadwalItem(
-            hari: 'Kamis',
-            mapel: [
-              'Matematika',
-              'PPL',
-              'Basis Data',
-            ],
-            color: Color(0xffE6E6FA),
-          ),
-          JadwalItem(
-            hari: 'Jumat',
-            mapel: [
-              'PBO',
-              'PWPB',
-              'Bahasa Inggris',
-            ],
-          ),
+        padding: EdgeInsets.symmetric(
+          horizontal: defaultMargin,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () {
+                carouselController?.previousPage();
+              },
+              child: Image.asset(
+                'assets/btn_back.png',
+                width: 25,
+              ),
+            ),
+            Container(
+              width: 100,
+              height: 36,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: kDarkBlue,
+              ),
+              child: Center(
+                child: Text(
+                  hari[_currentIndex],
+                  style: whiteTextStyle.copyWith(
+                    fontWeight: semiBold,
+                    fontSize: 13,
+                    letterSpacing: 2.4,
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                // TODO: Bug tombol carousel
+                carouselController?.nextPage();
+              },
+              child: Image.asset(
+                'assets/btn_go.png',
+                width: 25,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget cardGroupSenin() {
+      return Column(
+        children: senin.map((data) {
+          return JadwalItem(
+            gambar: data.gambar,
+            mapel: data.mapel,
+            guru: data.guru,
+            tugas: data.tugas,
+            waktu: data.waktu,
+          );
+        }).toList(),
+      );
+    }
+
+    Widget cardGroupSelasa() {
+      return Column(
+        children: selasa.map((data) {
+          return JadwalItem(
+            gambar: data.gambar,
+            mapel: data.mapel,
+            guru: data.guru,
+            tugas: data.tugas,
+            waktu: data.waktu,
+          );
+        }).toList(),
+      );
+    }
+
+    Widget carousel() {
+      return CarouselSlider(
+        items: [
+          cardGroupSenin(),
+          cardGroupSelasa(),
         ],
-      ),
-    );
+        options: CarouselOptions(
+          initialPage: _currentIndex,
+          enableInfiniteScroll: false,
+          viewportFraction: 1,
+          aspectRatio: 0.6,
+          onPageChanged: (index, reason) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
+      );
+    }
+
+    return Scaffold(
+        backgroundColor: kWhiteColor,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: kDarkBlue,
+                ),
+              ),
+            ),
+            child: appbar(),
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              vertical: 26,
+            ),
+            child: Column(
+              children: [
+                indicator(),
+                carousel(),
+              ],
+            ),
+          ),
+        ));
   }
 }

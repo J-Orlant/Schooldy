@@ -14,6 +14,10 @@ class SignInPage extends StatelessWidget {
         child: Container(
           width: 234,
           height: MediaQuery.of(context).size.height / 4,
+          margin: EdgeInsets.only(
+            top: 5,
+            bottom: 10,
+          ),
           decoration: BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/image_login.png'),
@@ -56,6 +60,7 @@ class SignInPage extends StatelessWidget {
                 icon: Icon(
                   Icons.email,
                   color: Color(0xff73A5FF),
+                  size: 20,
                 ),
               ),
               SizedBox(
@@ -63,9 +68,11 @@ class SignInPage extends StatelessWidget {
               ),
               CustomTextForm(
                 hint: 'Password',
+                obsecure: true,
                 icon: Icon(
                   Icons.lock,
                   color: Color(0xff73A5FF),
+                  size: 20,
                 ),
               ),
 
@@ -79,6 +86,7 @@ class SignInPage extends StatelessWidget {
                   'Forgot Password',
                   style: primaryTextStyle.copyWith(
                     decoration: TextDecoration.underline,
+                    fontSize: 12,
                   ),
                 ),
               ),

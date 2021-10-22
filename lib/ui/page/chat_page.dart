@@ -376,6 +376,7 @@ class _ChatPopUpState extends State<ChatPopUp> {
                       horizontal: 29,
                       vertical: 25,
                     ),
+                    child: Column(),
                   ),
                 ],
               ),
