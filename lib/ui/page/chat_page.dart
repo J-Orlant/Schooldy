@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/animation/custom_rect_tween.dart';
 import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
+import 'package:kksi/ui/widget/kontak_tile.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -335,7 +336,6 @@ class _ChatPopUpState extends State<ChatPopUp> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Material(
-          borderRadius: BorderRadius.circular(16),
           color: Colors.white,
           child: SizedBox(
             child: SingleChildScrollView(
@@ -372,11 +372,27 @@ class _ChatPopUpState extends State<ChatPopUp> {
                   Container(
                     width: double.infinity,
                     color: kPrimaryColor,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 29,
-                      vertical: 25,
+                    padding: EdgeInsets.only(
+                      top: 20,
+                      left: 25,
+                      right: 25,
                     ),
-                    child: Column(),
+                    child: Column(
+                      children: [
+                        KontakTile(
+                          inisial: 'RN',
+                          nama: 'Bu Rena',
+                        ),
+                        KontakTile(
+                          inisial: 'LS',
+                          nama: 'Bu Lesa',
+                        ),
+                        KontakTile(
+                          inisial: 'BB',
+                          nama: 'Bu Bambang',
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

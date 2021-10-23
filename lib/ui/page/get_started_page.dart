@@ -40,7 +40,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
           margin: EdgeInsets.only(
             top: 18,
             right: 23,
-            bottom: 40,
+            bottom: 35,
           ),
           child: Text(
             (_currentIndex == 2) ? '' : 'skip',
@@ -288,9 +288,6 @@ class _GetStartedPageState extends State<GetStartedPage> {
           children: [
             skipButton(),
             carousel(),
-            // getStarted1(),
-            // getStarted2(),
-            // getStarted3(),
             indicator(),
           ],
         ),

@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
+              color: kBlackColor.withOpacity(0.25),
               blurRadius: 5,
               offset: Offset(0, 2),
             ),

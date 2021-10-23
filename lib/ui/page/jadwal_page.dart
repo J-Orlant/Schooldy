@@ -12,7 +12,7 @@ class JadwalPage extends StatefulWidget {
 }
 
 class _JadwalPageState extends State<JadwalPage> {
-  final CarouselController? carouselController = new CarouselController();
+  final CarouselController? _controller = new CarouselController();
   int _currentIndex = 0;
   List hari = [
     'Senin',
@@ -59,7 +59,7 @@ class _JadwalPageState extends State<JadwalPage> {
           children: [
             GestureDetector(
               onTap: () {
-                carouselController?.previousPage();
+                _controller?.previousPage();
               },
               child: Image.asset(
                 'assets/btn_back.png',
@@ -88,7 +88,7 @@ class _JadwalPageState extends State<JadwalPage> {
             GestureDetector(
               onTap: () {
                 // TODO: Bug tombol carousel
-                carouselController?.nextPage();
+                _controller?.nextPage();
               },
               child: Image.asset(
                 'assets/btn_go.png',

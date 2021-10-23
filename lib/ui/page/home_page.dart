@@ -361,8 +361,8 @@ class HomePage extends StatelessWidget {
     Widget agenda() {
       return SizedBox.expand(
         child: DraggableScrollableSheet(
-          initialChildSize: 0.35,
-          minChildSize: 0.35,
+          initialChildSize: 0.32,
+          minChildSize: 0.32,
           maxChildSize: 0.75,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
