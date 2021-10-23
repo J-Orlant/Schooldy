@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
 
+//ignore: must_be_immutable
 class CustomTextForm extends StatefulWidget {
   final String hint;
   final Icon icon;

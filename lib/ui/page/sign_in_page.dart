@@ -19,9 +19,10 @@ class SignInPage extends StatelessWidget {
             bottom: 10,
           ),
           decoration: BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('assets/image_login.png'),
-          )),
+            image: DecorationImage(
+              image: AssetImage('assets/image_login.png'),
+            ),
+          ),
         ),
       );
     }
@@ -125,7 +126,7 @@ class SignInPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: kDarkBlue,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

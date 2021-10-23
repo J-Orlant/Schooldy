@@ -57,6 +57,7 @@ class _JadwalPageState extends State<JadwalPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            // TODO: Bug Tombol Carousel
             GestureDetector(
               onTap: () {
                 _controller?.previousPage();
@@ -149,32 +150,33 @@ class _JadwalPageState extends State<JadwalPage> {
     }
 
     return Scaffold(
-        backgroundColor: kWhiteColor,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: kDarkBlue,
-                ),
+      backgroundColor: kWhiteColor,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: kDarkBlue,
               ),
             ),
-            child: appbar(),
+          ),
+          child: appbar(),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            vertical: 26,
+          ),
+          child: Column(
+            children: [
+              indicator(),
+              carousel(),
+            ],
           ),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 26,
-            ),
-            child: Column(
-              children: [
-                indicator(),
-                carousel(),
-              ],
-            ),
-          ),
-        ));
+      ),
+    );
   }
 }

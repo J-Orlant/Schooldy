@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       Widget header() {
         return Container(
           margin: EdgeInsets.only(
-            top: 31,
+            top: 22,
             left: defaultMargin,
             right: defaultMargin,
           ),
@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello',
+                'Halo',
                 style: whiteTextStyle.copyWith(
                   fontWeight: semiBold,
                   fontSize: 20,
@@ -133,7 +133,7 @@ class HomePage extends StatelessWidget {
       Widget jurusan() {
         return Container(
           margin: EdgeInsets.only(
-            top: 35,
+            top: 18,
             left: defaultMargin,
           ),
           child: SingleChildScrollView(
@@ -225,7 +225,7 @@ class HomePage extends StatelessWidget {
                                 height: 12,
                               ),
                               Text(
-                                'To-Do',
+                                'Tugas',
                                 style: whiteTextStyle.copyWith(
                                   fontWeight: medium,
                                 ),
@@ -258,7 +258,7 @@ class HomePage extends StatelessWidget {
                                 height: 12,
                               ),
                               Text(
-                                'Missing',
+                                'Terlambat',
                                 style: whiteTextStyle.copyWith(
                                   fontWeight: medium,
                                 ),
@@ -271,6 +271,7 @@ class HomePage extends StatelessWidget {
                     Column(
                       children: [
                         Container(
+                          width: 100,
                           height: 34,
                           padding: EdgeInsets.symmetric(
                             horizontal: 10,
@@ -292,18 +293,23 @@ class HomePage extends StatelessWidget {
                               SizedBox(
                                 width: 15,
                               ),
-                              Text(
-                                'Completed',
-                                style: blackTextStyle.copyWith(
-                                  fontSize: 10,
-                                  fontWeight: medium,
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    'Selesai',
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 10,
+                                      fontWeight: medium,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Container(
-                          height: 44,
+                          width: 118,
+                          height: 34,
                           margin: EdgeInsets.only(
                             top: 28,
                           ),
@@ -328,7 +334,7 @@ class HomePage extends StatelessWidget {
                                 width: 15,
                               ),
                               Text(
-                                'Homework',
+                                'Total Tugas',
                                 style: blackTextStyle.copyWith(
                                   fontSize: 10,
                                   fontWeight: medium,
@@ -361,8 +367,8 @@ class HomePage extends StatelessWidget {
     Widget agenda() {
       return SizedBox.expand(
         child: DraggableScrollableSheet(
-          initialChildSize: 0.32,
-          minChildSize: 0.32,
+          initialChildSize: 0.4,
+          minChildSize: 0.4,
           maxChildSize: 0.75,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
