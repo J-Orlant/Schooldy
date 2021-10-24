@@ -57,7 +57,6 @@ class _JadwalPageState extends State<JadwalPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // TODO: Bug Tombol Carousel
             GestureDetector(
               onTap: () {
                 if (_currentIndex == 0) {
@@ -92,8 +91,11 @@ class _JadwalPageState extends State<JadwalPage> {
             ),
             GestureDetector(
               onTap: () {
-                // TODO: Bug tombol carousel
-                _controller?.nextPage();
+                if (_currentIndex == hari.length - 1) {
+                  return null;
+                } else {
+                  _controller?.nextPage();
+                }
               },
               child: Image.asset(
                 'assets/btn_go.png',
@@ -139,11 +141,13 @@ class _JadwalPageState extends State<JadwalPage> {
           cardGroupSenin(),
           cardGroupSelasa(),
         ],
+        carouselController: _controller,
         options: CarouselOptions(
           initialPage: _currentIndex,
           enableInfiniteScroll: false,
           viewportFraction: 1,
           aspectRatio: 0.6,
+          scrollPhysics: BouncingScrollPhysics(),
           onPageChanged: (index, reason) {
             setState(() {
               _currentIndex = index;

@@ -62,6 +62,7 @@ class SignInPage extends StatelessWidget {
               SizedBox(
                 height: 26,
               ),
+              // TODO: Bug di password eye icon
               CustomTextForm(
                 hint: 'Password',
                 obsecure: true,
