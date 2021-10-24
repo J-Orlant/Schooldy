@@ -16,6 +16,134 @@ class TugasItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget itemUpload() {
+      return Container(
+        margin: EdgeInsets.only(
+          bottom: 10,
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: kGreyColor,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: Icon(
+                            Icons.photo,
+                            size: 40,
+                            color: kBlackColor.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        '12-07-21.jpg',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: light,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    top: -10,
+                    right: -10,
+                    child: IconButton(
+                      icon: Icon(Icons.close),
+                      color: kBlackColor.withOpacity(0.5),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget header() {
+      return Column(
+        children: [
+          Row(
+            children: [
+              // Identitas
+              Column(
+                children: [
+                  // Profil
+                  Container(
+                    width: 50,
+                    height: 50,
+                    margin: EdgeInsets.only(
+                      bottom: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: kPrimaryColor,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'RY',
+                        style: whiteTextStyle.copyWith(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Nama
+                  Text(
+                    'Ryan S.pd',
+                    style: blackTextStyle,
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      'Matematika',
+                      style: blueTextStyle.copyWith(
+                        fontWeight: bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Tugas Persamaan Kuadrat',
+                      style: blackTextStyle.copyWith(
+                        fontWeight: semiBold,
+                      ),
+                    ),
+                    Text(
+                      'Tenggat : Senin, 11.59 PM',
+                      style: blackTextStyle,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Divider(
+            thickness: 1,
+          )
+        ],
+      );
+    }
+
     return InkWell(
       onTap: () {
         showModalBottomSheet(
@@ -35,69 +163,7 @@ class TugasItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        // Identitas
-                        Column(
-                          children: [
-                            // Profil
-                            Container(
-                              width: 50,
-                              height: 50,
-                              margin: EdgeInsets.only(
-                                bottom: 5,
-                              ),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: kPrimaryColor,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'RY',
-                                  style: whiteTextStyle.copyWith(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // Nama
-                            Text(
-                              'Ryan S.pd',
-                              style: blackTextStyle,
-                            ),
-                          ],
-                        ),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Text(
-                                'Matematika',
-                                style: blueTextStyle.copyWith(
-                                  fontWeight: bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                'Tugas Persamaan Kuadrat',
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: semiBold,
-                                ),
-                              ),
-                              Text(
-                                'Tenggat : Senin, 11.59 PM',
-                                style: blackTextStyle,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      thickness: 1,
-                    ),
+                    header(),
                     SizedBox(
                       height: 5,
                     ),
@@ -153,61 +219,7 @@ class TugasItem extends StatelessWidget {
                     ),
                     Divider(),
                     // pengumpulan
-                    Container(
-                      margin: EdgeInsets.only(
-                        bottom: 10,
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: kGreyColor,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Stack(
-                              children: [
-                                Column(
-                                  children: [
-                                    Expanded(
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.photo,
-                                          size: 40,
-                                          color: kBlackColor.withOpacity(0.5),
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      '12-07-21.jpg',
-                                      style: blackTextStyle.copyWith(
-                                        fontWeight: light,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                  ],
-                                ),
-                                Positioned(
-                                  top: -10,
-                                  right: -10,
-                                  child: IconButton(
-                                    icon: Icon(Icons.close),
-                                    color: kBlackColor.withOpacity(0.5),
-                                    onPressed: () {},
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+
                     Container(
                       width: double.infinity,
                       margin: EdgeInsets.only(
@@ -217,7 +229,7 @@ class TugasItem extends StatelessWidget {
                         style: TextButton.styleFrom(
                             backgroundColor: kDarkBlue,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(5),
                             )),
                         onPressed: () {},
                         child: Container(
@@ -233,11 +245,12 @@ class TugasItem extends StatelessWidget {
                       ),
                     ),
                     Container(
+                      width: double.infinity,
                       child: TextButton(
                         style: TextButton.styleFrom(
                             backgroundColor: kDarkBlue,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(5),
                             )),
                         onPressed: () {},
                         child: Container(
@@ -247,13 +260,6 @@ class TugasItem extends StatelessWidget {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(
-                                  Icons.upload,
-                                  color: kWhiteColor,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
                                 Text(
                                   'Upload',
                                   style: whiteTextStyle.copyWith(

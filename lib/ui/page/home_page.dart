@@ -132,33 +132,33 @@ class HomePage extends StatelessWidget {
 
       Widget jurusan() {
         return Container(
+          height: 38,
           margin: EdgeInsets.only(
             top: 18,
             left: defaultMargin,
           ),
-          child: SingleChildScrollView(
+          child: ListView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                JurusanItem(
-                  jurusan: 'Rekayasa Perangkat Lunak',
-                  color: kDarkBlue,
-                  select: true,
-                ),
-                JurusanItem(
-                  jurusan: 'Multimedia',
-                  color: Color(0xffDF7D7D),
-                ),
-                JurusanItem(
-                  jurusan: 'Broadcasting',
-                  color: Color(0xffF9C9C9),
-                ),
-                JurusanItem(
-                  jurusan: 'Teknik Jaringan dan Komputer',
-                  color: Color(0xff58A560),
-                ),
-              ],
-            ),
+            physics: BouncingScrollPhysics(),
+            children: [
+              JurusanItem(
+                jurusan: 'Rekayasa Perangkat Lunak',
+                color: kDarkBlue,
+                select: true,
+              ),
+              JurusanItem(
+                jurusan: 'Multimedia',
+                color: Color(0xffDF7D7D),
+              ),
+              JurusanItem(
+                jurusan: 'Broadcasting',
+                color: Color(0xffF9C9C9),
+              ),
+              JurusanItem(
+                jurusan: 'Teknik Jaringan dan Komputer',
+                color: Color(0xff58A560),
+              ),
+            ],
           ),
         );
       }

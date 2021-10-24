@@ -60,7 +60,11 @@ class _JadwalPageState extends State<JadwalPage> {
             // TODO: Bug Tombol Carousel
             GestureDetector(
               onTap: () {
-                _controller?.previousPage();
+                if (_currentIndex == 0) {
+                  return null;
+                } else {
+                  _controller?.previousPage();
+                }
               },
               child: Image.asset(
                 'assets/btn_back.png',

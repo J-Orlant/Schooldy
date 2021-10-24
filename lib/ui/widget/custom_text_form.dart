@@ -4,13 +4,13 @@ import 'package:kksi/shared/theme.dart';
 //ignore: must_be_immutable
 class CustomTextForm extends StatefulWidget {
   final String hint;
-  final Icon icon;
+  final String image;
   bool obsecure;
 
   CustomTextForm({
     Key? key,
     required this.hint,
-    required this.icon,
+    required this.image,
     this.obsecure = false,
   }) : super(key: key);
 
@@ -44,9 +44,16 @@ class _CustomTextFormState extends State<CustomTextForm> {
         ),
         child: Row(
           children: [
-            widget.icon,
-            SizedBox(
-              width: 10,
+            Container(
+              width: 20,
+              margin: EdgeInsets.only(
+                right: 10,
+              ),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(widget.image),
+                ),
+              ),
             ),
             Expanded(
               child: TextFormField(
@@ -72,7 +79,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
                     },
                     child: Icon(
                       Icons.remove_red_eye_sharp,
-                      color: kPrimaryColor,
+                      color: kDarkBlue,
                       size: 20,
                     ),
                   )

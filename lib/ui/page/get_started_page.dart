@@ -21,6 +21,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
 
   @override
   void dispose() {
+    // ignore: unnecessary_statements
     this.carouselController;
     super.dispose();
   }

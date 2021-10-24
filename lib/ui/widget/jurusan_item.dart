@@ -25,6 +25,13 @@ class JurusanItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: kWhiteColor,
           borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 4),
+              blurRadius: 4,
+              color: kBlackColor.withOpacity(0.25),
+            )
+          ],
         ),
         child: Row(
           children: [

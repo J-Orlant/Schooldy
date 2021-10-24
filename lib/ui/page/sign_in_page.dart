@@ -47,10 +47,9 @@ class SignInPage extends StatelessWidget {
             children: [
               Text(
                 'Sign In',
-                style: primaryTextStyle.copyWith(
+                style: blueTextStyle.copyWith(
                   fontSize: 30,
                   fontWeight: semiBold,
-                  color: Color(0xff73A5FF),
                 ),
               ),
               SizedBox(
@@ -58,11 +57,7 @@ class SignInPage extends StatelessWidget {
               ),
               CustomTextForm(
                 hint: 'Email',
-                icon: Icon(
-                  Icons.email,
-                  color: Color(0xff73A5FF),
-                  size: 20,
-                ),
+                image: 'assets/icon_email.png',
               ),
               SizedBox(
                 height: 26,
@@ -70,11 +65,7 @@ class SignInPage extends StatelessWidget {
               CustomTextForm(
                 hint: 'Password',
                 obsecure: true,
-                icon: Icon(
-                  Icons.lock,
-                  color: Color(0xff73A5FF),
-                  size: 20,
-                ),
+                image: 'assets/icon_password.png',
               ),
 
               // NOTE: Forgot Pass
@@ -83,11 +74,19 @@ class SignInPage extends StatelessWidget {
                 width: double.infinity,
                 margin: EdgeInsets.only(top: 8),
                 alignment: Alignment.centerRight,
-                child: Text(
-                  'Forgot Password',
-                  style: primaryTextStyle.copyWith(
-                    decoration: TextDecoration.underline,
-                    fontSize: 12,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/forgot-pass',
+                    );
+                  },
+                  child: Text(
+                    'Forgot Password',
+                    style: primaryTextStyle.copyWith(
+                      decoration: TextDecoration.underline,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ),
@@ -108,13 +107,16 @@ class SignInPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Are you a parent?', style: greyTextStyle),
+                    Text(
+                      'Are you a parent?',
+                      style: greyTextStyle,
+                    ),
                     SizedBox(
                       width: 2,
                     ),
                     Text(
                       'Sign Up',
-                      style: primaryTextStyle,
+                      style: blueTextStyle,
                     )
                   ],
                 ),

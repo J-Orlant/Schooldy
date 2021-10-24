@@ -5,6 +5,7 @@ import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/ui/page/detail_notif_page.dart';
 import 'package:kksi/ui/page/detail_profil_page.dart';
+import 'package:kksi/ui/page/forgot_pass_page.dart';
 import 'package:kksi/ui/page/jadwal_page.dart';
 import 'package:kksi/ui/page/main_page.dart';
 import 'package:kksi/ui/page/notification_page.dart';
@@ -12,6 +13,7 @@ import 'package:kksi/ui/page/rapot_page.dart';
 import 'package:kksi/ui/page/room_chat.dart';
 import 'package:kksi/ui/page/sign_in_page.dart';
 import 'package:kksi/ui/page/splash_page.dart';
+import 'package:kksi/ui/page/success_forgot_page.dart';
 import 'package:provider/provider.dart';
 
 import 'ui/page/get_started_page.dart';
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
             ('/detail-profil'): (context) => DetailProfilPage(),
             ('/rapot'): (context) => RapotPage(),
             ('/jadwal'): (context) => JadwalPage(),
+            ('/forgot-pass'): (context) => ForgotPassPage(),
+            ('/success-forgot'): (context) => SuccessForgotPage(),
           },
         ),
       ),
