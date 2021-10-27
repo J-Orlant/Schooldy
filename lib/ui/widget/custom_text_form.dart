@@ -6,13 +6,15 @@ class CustomTextForm extends StatefulWidget {
   final String hint;
   final String image;
   bool obsecure;
+  final TextEditingController controller;
+
 
   CustomTextForm({
-    Key? key,
     required this.hint,
     required this.image,
     this.obsecure = false,
-  }) : super(key: key);
+    required this.controller,
+  });
 
   @override
   State<CustomTextForm> createState() => _CustomTextFormState();
@@ -58,6 +60,7 @@ class _CustomTextFormState extends State<CustomTextForm> {
             Expanded(
               child: TextFormField(
                 obscureText: widget.obsecure,
+                controller: widget.controller,
                 decoration: InputDecoration.collapsed(
                   border: InputBorder.none,
                   fillColor: kWhiteColor,

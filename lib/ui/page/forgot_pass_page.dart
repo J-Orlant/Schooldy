@@ -4,8 +4,10 @@ import 'package:kksi/ui/widget/custom_text_button.dart';
 import 'package:kksi/ui/widget/custom_text_form.dart';
 
 class ForgotPassPage extends StatelessWidget {
-  const ForgotPassPage({Key? key}) : super(key: key);
-
+  ForgotPassPage({Key? key}) : super(key: key);
+  final TextEditingController emailController = TextEditingController(text: '');
+  final TextEditingController passwordController =
+      TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +70,7 @@ class ForgotPassPage extends StatelessWidget {
                     child: CustomTextForm(
                       hint: 'Masukkan Email Anda',
                       image: 'assets/icon_email.png',
+                      controller: emailController,
                     ),
                   ),
                   CustomTextButton(

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "946560436501",
+    "project_id": "schooldy-f1893",
+    "storage_bucket": "schooldy-f1893.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946560436501:android:c84d388b97c975c0df011c",
+        "android_client_info": {
+          "package_name": "com.schooldy.kksi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946560436501-eush6jbecklugn1pla8agc96b5ar47nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAedIZbC8uVTqfP6sbt-vt7TX2uZgNZj6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946560436501-eush6jbecklugn1pla8agc96b5ar47nf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
