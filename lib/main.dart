@@ -5,11 +5,13 @@ import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/cubit/auth_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
+import 'package:kksi/providers/kalender_app.dart';
 import 'package:kksi/ui/page/detail_notif_page.dart';
 import 'package:kksi/ui/page/detail_profil_page.dart';
 import 'package:kksi/ui/page/forgot_pass_page.dart';
+import 'package:kksi/ui/page/guru/main_guru.dart';
 import 'package:kksi/ui/page/jadwal_page.dart';
-import 'package:kksi/ui/page/main_page.dart';
+import 'package:kksi/ui/page/siswa/main_page.dart';
 import 'package:kksi/ui/page/notification_page.dart';
 import 'package:kksi/ui/page/rapot_page.dart';
 import 'package:kksi/ui/page/room_chat.dart';
@@ -49,6 +51,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<Absensi>(
             create: (BuildContext context) => Absensi(),
           ),
+          ChangeNotifierProvider<Kalender>(
+            create: (BuildContext context) => Kalender(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -56,7 +61,8 @@ class MyApp extends StatelessWidget {
             ('/'): (context) => SplashPage(),
             ('/get-started'): (context) => GetStartedPage(),
             ('/sign-in'): (context) => SignInPage(),
-            ('/main'): (context) => MainPage(),
+            ('/mainSiswa'): (context) => MainPageSiswa(),
+            ('/mainGuru'): (context) => MainGuru(),
             ('/notif'): (context) => NotificationPage(),
             ('/detail-notif'): (context) => DetailNotifPage(),
             ('/room-chat'): (context) => RoomChat(),

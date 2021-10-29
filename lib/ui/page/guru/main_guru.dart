@@ -3,27 +3,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/chat_page.dart';
+import 'package:kksi/ui/page/guru/home_page_guru.dart';
+import 'package:kksi/ui/page/guru/kelas_page.dart';
 import 'package:kksi/ui/page/home_page.dart';
 import 'package:kksi/ui/page/profile_page.dart';
-import 'package:kksi/ui/page/tugas_page.dart';
 import 'package:kksi/ui/widget/custom_navigation_item.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class MainGuru extends StatefulWidget {
+  const MainGuru({Key? key}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _MainGuruState createState() => _MainGuruState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainGuruState extends State<MainGuru> {
   @override
   Widget build(BuildContext context) {
     Widget currentPage(currentIndex) {
       switch (currentIndex) {
         case 0:
-          return HomePage();
+          return HomePageGuru();
         case 1:
-          return TugasPage();
+          return KelasPage();
         case 2:
           return ChatPage();
         case 3:
@@ -67,8 +68,9 @@ class _MainPageState extends State<MainPage> {
                 index: 0,
               ),
               CustomNavigationItem(
-                icon: 'assets/icon_tugas.png',
-                title: 'Tugas',
+                icon: 'assets/icon_kelas.png',
+                width: 27,
+                title: 'Kelas',
                 index: 1,
               ),
               CustomNavigationItem(

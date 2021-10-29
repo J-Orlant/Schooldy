@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
+import 'package:kksi/cubit/auth_cubit.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/statistik_tile.dart';
 
@@ -247,6 +248,7 @@ class ProfilePage extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/sign-in', (route) => false);
+            context.read<AuthCubit>().signOut();
             BlocProvider.of<PageCubit>(context).setPage(0);
           },
           child: Text(

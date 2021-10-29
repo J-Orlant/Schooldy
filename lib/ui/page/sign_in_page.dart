@@ -114,14 +114,14 @@ class SignInPage extends StatelessWidget {
                   if (state is AuthSuccess && state.user.role == "siswa") {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      '/main',
+                      '/mainSiswa',
                       (route) => false,
                     );
                   } //Guru
                   else if (state is AuthSuccess && state.user.role == "guru") {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      '/room-chat',
+                      '/mainGuru',
                       (route) => false,
                     );
                   } //orang tua

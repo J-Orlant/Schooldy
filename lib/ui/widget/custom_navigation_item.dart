@@ -7,12 +7,14 @@ class CustomNavigationItem extends StatelessWidget {
   final String icon;
   final String title;
   final int index;
-  const CustomNavigationItem({
-    Key? key,
-    required this.index,
-    required this.title,
-    required this.icon,
-  }) : super(key: key);
+  double width;
+  CustomNavigationItem(
+      {Key? key,
+      required this.index,
+      required this.title,
+      required this.icon,
+      this.width = 24})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,7 @@ class CustomNavigationItem extends StatelessWidget {
           SizedBox(),
           Image.asset(
             icon,
-            width: 24,
-            height: 24,
+            width: width,
             color: (context.read<PageCubit>().state == index)
                 ? kDarkBlue
                 : kGreyColor,
