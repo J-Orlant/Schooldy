@@ -38,7 +38,7 @@ class HomePageGuru extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'KS',
+                    'BS',
                     style: primaryTextStyle.copyWith(
                       fontWeight: semiBold,
                       fontSize: 18,
@@ -119,7 +119,7 @@ class HomePageGuru extends StatelessWidget {
                 ),
               ),
               Text(
-                'Kevin Saputra',
+                'Budi Santoso',
                 style: whiteTextStyle.copyWith(
                   fontWeight: semiBold,
                   fontSize: 18,
@@ -427,12 +427,12 @@ class HomePageGuru extends StatelessWidget {
       );
     }
 
-    Widget agenda() {
+    Widget absen() {
       return SizedBox.expand(
         child: DraggableScrollableSheet(
           initialChildSize: 0.23,
           minChildSize: 0.23,
-          maxChildSize: 0.75,
+          maxChildSize: 0.45,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
               decoration: BoxDecoration(
@@ -484,11 +484,75 @@ class HomePageGuru extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 4,
+                    height: 22,
                   ),
-
-                  // Item
-                  _AgendaItemLoop(),
+                  // NOTE: Absen
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/icon_absen_masuk_guru.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                            SizedBox(
+                              height: 9,
+                            ),
+                            Text(
+                              'Absen Masuk',
+                              style: blueTextStyle.copyWith(
+                                fontSize: 12,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/icon_tidak_hadir_guru.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                            SizedBox(
+                              height: 9,
+                            ),
+                            Text(
+                              'Absen Masuk',
+                              style: blueTextStyle.copyWith(
+                                fontSize: 12,
+                                fontWeight: medium,
+                                color: Color(0xffE28F8F),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/icon_keluar_guru.png',
+                              width: 50,
+                              height: 50,
+                            ),
+                            SizedBox(
+                              height: 9,
+                            ),
+                            Text(
+                              'Absen Masuk',
+                              style: greyTextStyle.copyWith(
+                                fontSize: 12,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: 100,
                   ),
@@ -506,218 +570,8 @@ class HomePageGuru extends StatelessWidget {
         child: Stack(
           children: [
             botLayer(),
-            agenda(),
+            absen(),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _AgendaItemLoop extends StatelessWidget {
-  _AgendaItemLoop({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<Absensi>(
-      builder: (context, absensi, _) => Column(
-        children: fakedata.map((data) {
-          return Consumer<Absensi>(
-            builder: (context, absensi, _) => GestureDetector(
-              onTap: (absensi.isAbsen == 'avaible')
-                  ? (data.status == 'avaible') // at first false
-                      ? () {
-                          Navigator.of(context).push(
-                            HeroDialogRoute(
-                              builder: (context) => Center(
-                                child: _AgendaPopUpCard(
-                                  aModels: data,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      : () {}
-                  : () {},
-              child: Hero(
-                tag: data.id,
-                createRectTween: (begin, end) {
-                  return CustomRectTween(begin: begin, end: end);
-                },
-                child: AgendaItem(
-                  id: data.id,
-                  profil: data.guru,
-                  mapel: data.mapel,
-                  materi: data.materi,
-                  color: data.warna,
-                  status: (absensi.id == data.id)
-                      ? absensi.isAbsen.toString()
-                      : data.status,
-                ),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-}
-
-class _AgendaPopUpCard extends StatefulWidget {
-  const _AgendaPopUpCard({
-    Key? key,
-    required this.aModels,
-  }) : super(key: key);
-
-  final AgendaModels aModels;
-
-  @override
-  __AgendaPopUpCardState createState() => __AgendaPopUpCardState();
-}
-
-class __AgendaPopUpCardState extends State<_AgendaPopUpCard> {
-  bool show = false;
-
-  @override
-  Widget build(BuildContext context) {
-    Widget link(show) {
-      if (show) {
-        return InkWell(
-          onTap: () async {
-            const url = 'https://meet.google.com/nmb-yakz-vxf';
-            if (await canLaunch(url)) {
-              await launch(url);
-            } else {
-              throw 'Could not launch $url';
-            }
-          },
-          child: Text(
-            'https://meet.google.com/nmb-yakz-vxf',
-            style: blueTextStyle.copyWith(
-              color: Colors.blue,
-            ),
-          ),
-        );
-      } else {
-        return SizedBox();
-      }
-    }
-
-    return Hero(
-      tag: widget.aModels.id,
-      createRectTween: (begin, end) {
-        return CustomRectTween(begin: begin, end: end);
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Material(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.white,
-          child: SizedBox(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 50,
-                          height: 50,
-                          margin: EdgeInsets.only(right: 15),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: widget.aModels.warna,
-                          ),
-                          child: Center(
-                            child: Text(
-                              widget.aModels.guru,
-                              style: whiteTextStyle.copyWith(
-                                fontWeight: semiBold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.aModels.mapel,
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 18,
-                                fontWeight: semiBold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Suji Yuji S.pd ',
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: light,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  widget.aModels.materi,
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: bold,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Divider(),
-                    link(show),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Opacity(
-                        opacity: (show) ? 0.50 : 1,
-                        child: Consumer<Absensi>(
-                          builder: (context, absensi, _) => TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: kDarkBlue,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                show = true;
-                              });
-                              absensi.isAbsen = 'absen';
-                              absensi.id = widget.aModels.id;
-                            },
-                            child: Text(
-                              'Hadir',
-                              style: whiteTextStyle.copyWith(
-                                fontWeight: semiBold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Divider(),
-                    Center(
-                      child: Text(widget.aModels.waktu),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
         ),
       ),
     );

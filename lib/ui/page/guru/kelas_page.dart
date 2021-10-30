@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
+import 'package:kksi/ui/page/guru/detail_kelas_page.dart';
 import 'package:kksi/ui/widget/group_class_item.dart';
 import 'package:kksi/ui/widget/kelas_item.dart';
 
@@ -93,9 +94,21 @@ class _KelasPageState extends State<KelasPage> {
       Widget kelasX() {
         return Column(
           children: [
-            KelasItem(
-              image: 'assets/image_kelas_rpl_1.png',
-              kelas: 'X RPL 1',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DetailKelasPage();
+                    },
+                  ),
+                );
+              },
+              child: KelasItem(
+                image: 'assets/image_kelas_rpl_1.png',
+                kelas: 'X RPL 1',
+              ),
             ),
             KelasItem(
               image: 'assets/image_kelas_rpl_2.png',
