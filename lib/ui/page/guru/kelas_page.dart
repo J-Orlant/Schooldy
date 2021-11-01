@@ -100,7 +100,9 @@ class _KelasPageState extends State<KelasPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return DetailKelasPage();
+                      return DetailKelasPage(
+                        kelas: 'X RPL 1',
+                      );
                     },
                   ),
                 );
@@ -110,13 +112,41 @@ class _KelasPageState extends State<KelasPage> {
                 kelas: 'X RPL 1',
               ),
             ),
-            KelasItem(
-              image: 'assets/image_kelas_rpl_2.png',
-              kelas: 'X RPL 2',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DetailKelasPage(
+                        kelas: 'X RPL 2',
+                      );
+                    },
+                  ),
+                );
+              },
+              child: KelasItem(
+                image: 'assets/image_kelas_rpl_2.png',
+                kelas: 'X RPL 2',
+              ),
             ),
-            KelasItem(
-              image: 'assets/image_kelas_mm_1.png',
-              kelas: 'X MM 1',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DetailKelasPage(
+                        kelas: 'X MM 1',
+                      );
+                    },
+                  ),
+                );
+              },
+              child: KelasItem(
+                image: 'assets/image_kelas_mm_1.png',
+                kelas: 'X MM 1',
+              ),
             ),
           ],
         );
@@ -125,13 +155,41 @@ class _KelasPageState extends State<KelasPage> {
       Widget kelasXI() {
         return Column(
           children: [
-            KelasItem(
-              image: 'assets/image_kelas_rpl_1.png',
-              kelas: 'XI RPL 1',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DetailKelasPage(
+                        kelas: 'XI RPL 1',
+                      );
+                    },
+                  ),
+                );
+              },
+              child: KelasItem(
+                image: 'assets/image_kelas_rpl_1.png',
+                kelas: 'XI RPL 1',
+              ),
             ),
-            KelasItem(
-              image: 'assets/image_kelas_bc_2.png',
-              kelas: 'XI BC 1',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DetailKelasPage(
+                        kelas: 'XI BC 1',
+                      );
+                    },
+                  ),
+                );
+              },
+              child: KelasItem(
+                image: 'assets/image_kelas_bc_2.png',
+                kelas: 'XI BC 1',
+              ),
             ),
           ],
         );
@@ -140,9 +198,23 @@ class _KelasPageState extends State<KelasPage> {
       Widget kelasXII() {
         return Column(
           children: [
-            KelasItem(
-              image: 'assets/image_kelas_rpl_1.png',
-              kelas: 'XII RPL 1',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DetailKelasPage(
+                        kelas: 'XII RPL 1',
+                      );
+                    },
+                  ),
+                );
+              },
+              child: KelasItem(
+                image: 'assets/image_kelas_rpl_1.png',
+                kelas: 'XII RPL 1',
+              ),
             ),
           ],
         );

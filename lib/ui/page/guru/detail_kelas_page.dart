@@ -6,7 +6,11 @@ import 'package:kksi/ui/page/guru/detail_tugas_page.dart';
 import 'package:kksi/ui/widget/tugas_guru_item.dart';
 
 class DetailKelasPage extends StatelessWidget {
-  const DetailKelasPage({Key? key}) : super(key: key);
+  final String kelas;
+  const DetailKelasPage({
+    required this.kelas,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +113,7 @@ class DetailKelasPage extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Kelas X RPL 1',
+          'Kelas $kelas',
           style: blackTextStyle.copyWith(
             fontSize: 16,
             fontWeight: semiBold,
@@ -143,8 +147,205 @@ class AddTugas extends StatefulWidget {
 class _AddTugasState extends State<AddTugas> {
   bool show = false;
 
+  TextEditingController deskripsiController =
+      TextEditingController(text: 'Deskripsi Tugas');
+  TextEditingController judulController = TextEditingController(text: '');
+  var focusNode = FocusNode(canRequestFocus: true);
+
+  // NOTE: DateTime
+  DateTime selectedDate = DateTime.now();
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      initialDate: selectedDate,
+      firstDate: DateTime(2021),
+      lastDate: DateTime(2025),
+      context: context,
+      helpText: 'Pilih Tenggat Waktu',
+      cancelText: 'Batal',
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    focusNode.dispose();
+    judulController.dispose();
+    deskripsiController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget judulMateri() {
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(
+          top: defaultMargin,
+          bottom: 18,
+        ),
+        decoration: BoxDecoration(
+          color: kDarkBlue,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(10),
+          ),
+        ),
+        child: Column(
+          children: [
+            Text(
+              'BAHASA INDONESIA',
+              style: whiteTextStyle.copyWith(
+                fontWeight: semiBold,
+                fontSize: 16,
+              ),
+            ),
+            Stack(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration.collapsed(
+                    hintText: 'Judul Materi',
+                    hintStyle: whiteTextStyle.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  cursorColor: kWhiteColor,
+                  controller: judulController,
+                  style: whiteTextStyle.copyWith(
+                    fontWeight: semiBold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
+                  focusNode: focusNode,
+                ),
+                Positioned(
+                  right: 5,
+                  child: GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(focusNode);
+                    },
+                    child: Icon(
+                      Icons.edit,
+                      color: kWhiteColor,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget tenggat() {
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.only(
+          top: 4,
+          bottom: 6,
+        ),
+        decoration: BoxDecoration(
+          color: kWhiteColor,
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 1),
+              blurRadius: 5,
+              color: kBlackColor.withOpacity(0.25),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Tenggat : ' + '${selectedDate.toLocal()}'.split(' ')[0],
+              style: blueTextStyle.copyWith(
+                fontWeight: medium,
+                fontSize: 12,
+              ),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            GestureDetector(
+              onTap: () => _selectDate(context),
+              child: Icon(
+                Icons.calendar_today,
+                color: kDarkBlue,
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget deskripsiTugas() {
+      Widget btnTambahLampiran() {
+        return Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(
+            horizontal: 14,
+            vertical: 10,
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: kDarkBlue,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                Icons.add,
+                color: kDarkBlue,
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'Tambah Lampiran',
+                    style: blueTextStyle.copyWith(
+                      fontWeight: medium,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 16,
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 240,
+              child: TextField(
+                maxLines: 11,
+                decoration: InputDecoration.collapsed(
+                  hintText: 'Deskripsi Tugas',
+                  hintStyle: blueTextStyle.copyWith(
+                    fontWeight: medium,
+                  ),
+                  hintTextDirection: TextDirection.ltr,
+                ),
+                textAlign: TextAlign.center,
+                focusNode: FocusNode(),
+              ),
+            ),
+            btnTambahLampiran(),
+          ],
+        ),
+      );
+    }
+
     return Hero(
       tag: 'link-tugas',
       createRectTween: (begin, end) {
@@ -153,13 +354,16 @@ class _AddTugasState extends State<AddTugas> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Material(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
           color: Colors.white,
           child: SizedBox(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(),
+              child: Column(
+                children: [
+                  judulMateri(),
+                  tenggat(),
+                  deskripsiTugas(),
+                ],
               ),
             ),
           ),
