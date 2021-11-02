@@ -22,7 +22,10 @@ class _SuccessForgotPageState extends State<SuccessForgotPage> {
               width: 330,
               height: 330,
               margin: EdgeInsets.only(bottom: 33),
-              child: LottieBuilder.asset('assets/email_sent.json'),
+              child: LottieBuilder.asset(
+                'assets/email_sent.json',
+                reverse: false,
+              ),
             ),
             Text(
               'Cek email anda untuk pembaruan password',

@@ -464,20 +464,47 @@ class HomePageGuru extends StatelessWidget {
                       right: defaultMargin,
                       left: defaultMargin,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Absen Kehadiran',
-                          style: blueTextStyle.copyWith(
-                            fontWeight: semiBold,
-                            fontSize: 20,
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Absen Kehadiran',
+                              style: blueTextStyle.copyWith(
+                                fontWeight: semiBold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'Senin, 09 Agustus',
+                              style: blueTextStyle.copyWith(
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Senin, 09 Agustus',
-                          style: blueTextStyle.copyWith(
-                            fontWeight: medium,
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 4,
+                            horizontal: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xffDF7D7D),
+                            ),
+                            color: Color(0xffDF7D7D).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            'Terlamabat\n1 Jam 50 Menit',
+                            style: blackTextStyle.copyWith(
+                              color: Color(0xffDF7D7D),
+                              fontWeight: medium,
+                              fontSize: 10,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ],

@@ -5,25 +5,22 @@ import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/chat_page.dart';
 import 'package:kksi/ui/page/home_page.dart';
 import 'package:kksi/ui/page/profile_page.dart';
-import 'package:kksi/ui/page/tugas_page.dart';
 import 'package:kksi/ui/widget/custom_navigation_item.dart';
 
-class MainPageSiswa extends StatefulWidget {
-  const MainPageSiswa({Key? key}) : super(key: key);
+class MainOrtu extends StatefulWidget {
+  const MainOrtu({Key? key}) : super(key: key);
 
   @override
-  _MainPageSiswaState createState() => _MainPageSiswaState();
+  _MainOrtuState createState() => _MainOrtuState();
 }
 
-class _MainPageSiswaState extends State<MainPageSiswa> {
+class _MainOrtuState extends State<MainOrtu> {
   @override
   Widget build(BuildContext context) {
     Widget currentPage(currentIndex) {
       switch (currentIndex) {
         case 0:
           return HomePage();
-        case 1:
-          return TugasPage();
         case 2:
           return ChatPage();
         case 3:
@@ -65,12 +62,6 @@ class _MainPageSiswaState extends State<MainPageSiswa> {
                 icon: 'assets/icon_home.png',
                 title: 'Home',
                 index: 0,
-              ),
-              CustomNavigationItem(
-                icon: 'assets/icon_tugas.png',
-                title: 'Tugas',
-                index: 1,
-                width: 18,
               ),
               CustomNavigationItem(
                 icon: 'assets/icon_chat.png',

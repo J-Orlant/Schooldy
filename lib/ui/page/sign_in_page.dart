@@ -129,7 +129,7 @@ class SignInPage extends StatelessWidget {
                       state.user.role == "orangtua") {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
-                      '/detail-profil',
+                      '/main-ortu',
                       (route) => false,
                     );
                   } else if (state is AuthFailed) {

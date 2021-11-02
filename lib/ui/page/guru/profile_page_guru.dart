@@ -112,7 +112,7 @@ class ProfilePageGuru extends StatelessWidget {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/rapot');
+            // Navigator.pushNamed(context, '/rapot');
           },
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -158,7 +158,7 @@ class ProfilePageGuru extends StatelessWidget {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/jadwal');
+            // Navigator.pushNamed(context, '/jadwal');
           },
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -200,11 +200,11 @@ class ProfilePageGuru extends StatelessWidget {
       );
     }
 
-    Widget agendaGuru() {
+    Widget jadwalMengajar() {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/rapot');
+            Navigator.pushNamed(context, '/jadwal-guru');
           },
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -226,14 +226,14 @@ class ProfilePageGuru extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/icon_agenda_guru.png',
-                  width: 19,
+                  'assets/icon_jadwal_mengajar.png',
+                  width: 25,
                 ),
                 SizedBox(
                   height: 6,
                 ),
                 Text(
-                  'Agenda Guru',
+                  'Jadwal Mengajar',
                   style: whiteTextStyle.copyWith(
                     fontWeight: semiBold,
                     fontSize: 12,
@@ -323,40 +323,6 @@ class ProfilePageGuru extends StatelessWidget {
       );
     }
 
-    Widget jadwalMengajar() {
-      return Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(defaultMargin),
-        margin: EdgeInsets.only(top: 40),
-        decoration: BoxDecoration(
-          color: kWhiteColor,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 1),
-              blurRadius: 5,
-              color: kBlackColor.withOpacity(0.25),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Jadwal Mengajar',
-              style: blueTextStyle.copyWith(
-                fontWeight: semiBold,
-              ),
-            ),
-            Icon(
-              Icons.keyboard_arrow_right,
-              color: kDarkBlue,
-            )
-          ],
-        ),
-      );
-    }
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: kWhiteColor,
@@ -390,10 +356,9 @@ class ProfilePageGuru extends StatelessWidget {
                 SizedBox(
                   width: 12,
                 ),
-                agendaGuru(),
+                jadwalMengajar(),
               ],
             ),
-            jadwalMengajar(),
             buttonSignOut(),
             SizedBox(
               height: 150,

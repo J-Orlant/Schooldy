@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
+import 'package:kksi/ui/page/guru/detail_tugas_siswa.dart';
 
 class SiswaTile extends StatelessWidget {
   final String name;
@@ -59,18 +60,30 @@ class SiswaTile extends StatelessWidget {
             ),
           ),
           (isDone)
-              ? Container(
-                  width: 28,
-                  height: 28,
-                  margin: EdgeInsets.only(right: 20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: kDarkBlue,
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      'assets/icon_done_tugas.png',
-                      width: 14,
+              ? GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return DetailTugasSiswa(nama: name);
+                        },
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 28,
+                    height: 28,
+                    margin: EdgeInsets.only(right: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: kDarkBlue,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/icon_done_tugas.png',
+                        width: 14,
+                      ),
                     ),
                   ),
                 )
