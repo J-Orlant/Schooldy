@@ -28,6 +28,9 @@ class _SplashPageState extends State<SplashPage> {
               context, '/mainGuru', (route) => false);
         } else if (user.email == 'yusuf@gmail.com') {
           Navigator.pushNamedAndRemoveUntil(
+              context, '/main-ortu', (route) => false);
+        } else {
+          Navigator.pushNamedAndRemoveUntil(
               context, '/mainSiswa', (route) => false);
         }
       },

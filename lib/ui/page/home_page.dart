@@ -4,6 +4,7 @@ import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
+import 'package:kksi/ui/page/siswa/absen_page.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
@@ -455,12 +456,20 @@ class _AgendaItemLoop extends StatelessWidget {
               onTap: (absensi.isAbsen == 'avaible')
                   ? (data.status == 'avaible') // at first false
                       ? () {
-                          Navigator.of(context).push(
-                            HeroDialogRoute(
-                              builder: (context) => Center(
-                                child: _AgendaPopUpCard(
-                                  aModels: data,
-                                ),
+                          // Navigator.of(context).push(
+                          //   HeroDialogRoute(
+                          //     builder: (context) => Center(
+                          //       child: _AgendaPopUpCard(
+                          //         aModels: data,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AbsenPage(
+                                aModels: data,
                               ),
                             ),
                           );
