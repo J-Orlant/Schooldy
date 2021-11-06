@@ -7,11 +7,15 @@ class KalenderIitem extends StatelessWidget {
   final int date;
   final String day;
   final int index;
+  final EdgeInsets margin;
+  final bool isKegiatan;
   const KalenderIitem({
     Key? key,
     required this.date,
     required this.day,
     required this.index,
+    this.isKegiatan = false,
+    this.margin = EdgeInsets.zero,
   }) : super(key: key);
 
   @override
@@ -24,6 +28,7 @@ class KalenderIitem extends StatelessWidget {
         right: 10,
         bottom: 8,
       ),
+      margin: margin,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: (index == kalender.currentIndex) ? kWhiteColor : kTransparent,
@@ -49,16 +54,31 @@ class KalenderIitem extends StatelessWidget {
               color: (index == kalender.currentIndex) ? kDarkBlue : kWhiteColor,
             ),
           ),
-          Container(
-            width: 8,
-            height: 8,
-            margin: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
-              color:
-                  (index == kalender.currentIndex) ? kDarkBlue : kTransparent,
-              shape: BoxShape.circle,
-            ),
-          )
+          (isKegiatan)
+              ? Container(
+                  width: 8,
+                  height: 8,
+                  margin: EdgeInsets.only(top: 15),
+                  decoration: BoxDecoration(
+                    color: (index == kalender.currentIndex)
+                        ? kDarkBlue
+                        : kWhiteColor,
+                    shape: BoxShape.circle,
+                  ),
+                )
+              : Container(
+                  width: 8,
+                  height: 8,
+                  margin: EdgeInsets.only(top: 15),
+                  decoration: BoxDecoration(
+                    color: (index == kalender.currentIndex)
+                        ? (isKegiatan)
+                            ? kWhiteColor
+                            : kTransparent
+                        : kTransparent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
         ],
       ),
     );

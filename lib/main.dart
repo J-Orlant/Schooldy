@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/cubit/auth_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
+import 'package:kksi/providers/camera_save.dart';
 import 'package:kksi/providers/kalender_app.dart';
 import 'package:kksi/ui/page/detail_notif_page.dart';
 import 'package:kksi/ui/page/detail_profil_page.dart';
@@ -13,10 +15,12 @@ import 'package:kksi/ui/page/forgot_pass_page.dart';
 import 'package:kksi/ui/page/guru/detail_tugas_siswa.dart';
 import 'package:kksi/ui/page/guru/laporan_kehadiran_page.dart';
 import 'package:kksi/ui/page/guru/laporan_nilai_page.dart';
+import 'package:kksi/ui/page/guru/kegiatan_page.dart';
 import 'package:kksi/ui/page/guru/main_guru.dart';
 import 'package:kksi/ui/page/guru/program_tahunan_page.dart';
 import 'package:kksi/ui/page/jadwal_page.dart';
 import 'package:kksi/ui/page/ortu/main_ortu.dart';
+import 'package:kksi/ui/page/siswa/camera_page.dart';
 import 'package:kksi/ui/page/siswa/main_page.dart';
 import 'package:kksi/ui/page/notification_page.dart';
 import 'package:kksi/ui/page/rapot_page.dart';
@@ -31,12 +35,19 @@ import 'ui/page/get_started_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final cameras = await availableCameras();
 
-  runApp(MyApp());
+  runApp(MyApp(
+    cameras: cameras,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final List<CameraDescription> cameras;
+  const MyApp({
+    Key? key,
+    required this.cameras,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +71,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<Kalender>(
             create: (BuildContext context) => Kalender(),
           ),
+          ChangeNotifierProvider<CameraSave>(
+            create: (BuildContext context) => CameraSave(),
+          )
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -76,11 +90,15 @@ class MyApp extends StatelessWidget {
             ('/jadwal'): (context) => JadwalPage(),
             ('/forgot-pass'): (context) => ForgotPassPage(),
             ('/success-forgot'): (context) => SuccessForgotPage(),
+            ('/camera-page'): (context) => CameraPage(
+                  cameras: cameras,
+                ),
             // Guru
             ('/mainGuru'): (context) => MainGuru(),
             ('/program-tahunan'): (context) => ProgramTahunanPage(),
             ('/laporan-nilai'): (context) => LaporanNilaiPage(),
             ('/laporan-kehadiran'): (context) => LaporanKehadiranPage(),
+            ('/kegiatan-page'): (context) => KegiatanPage(),
             // Ortu
             ('/main-ortu'): (context) => MainOrtu(),
           },

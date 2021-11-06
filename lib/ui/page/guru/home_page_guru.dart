@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kksi/bloc/page_cubit.dart';
-import 'package:kksi/models/agenda_models.dart';
-import 'package:kksi/providers/absensi_app.dart';
+
 import 'package:kksi/providers/kalender_app.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/animation/custom_rect_tween.dart';
-import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
-import 'package:kksi/ui/widget/agenda_item.dart';
+
 import 'package:kksi/ui/widget/kalender_item.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class HomePageGuru extends StatelessWidget {
-  const HomePageGuru({Key? key}) : super(key: key);
+class HomePageGuru extends StatefulWidget {
+  HomePageGuru({Key? key}) : super(key: key);
+
+  @override
+  State<HomePageGuru> createState() => _HomePageGuruState();
+}
+
+class _HomePageGuruState extends State<HomePageGuru> {
+  bool isAbsen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -161,9 +162,14 @@ class HomePageGuru extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Image.asset(
-                    'assets/icon_kalender.png',
-                    width: 36,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, ('/kegiatan-page'));
+                    },
+                    child: Image.asset(
+                      'assets/icon_kalender.png',
+                      width: 36,
+                    ),
                   ),
                 ],
               ),
@@ -257,7 +263,7 @@ class HomePageGuru extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Statistik Tugas',
+                'Statistik Kehadiran',
                 style: whiteTextStyle.copyWith(
                   fontSize: 20,
                   fontWeight: semiBold,
@@ -485,28 +491,30 @@ class HomePageGuru extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 4,
-                            horizontal: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xffDF7D7D),
-                            ),
-                            color: Color(0xffDF7D7D).withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            'Terlamabat\n1 Jam 50 Menit',
-                            style: blackTextStyle.copyWith(
-                              color: Color(0xffDF7D7D),
-                              fontWeight: medium,
-                              fontSize: 10,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                        (isAbsen)
+                            ? Container(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 4,
+                                  horizontal: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xffDF7D7D),
+                                  ),
+                                  color: Color(0xffDF7D7D).withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Text(
+                                  'Terlamabat\n1 Jam 50 Menit',
+                                  style: blackTextStyle.copyWith(
+                                    color: Color(0xffDF7D7D),
+                                    fontWeight: medium,
+                                    fontSize: 10,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            : SizedBox(),
                       ],
                     ),
                   ),
@@ -519,63 +527,84 @@ class HomePageGuru extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/icon_absen_masuk_guru.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Text(
-                              'Absen Masuk',
-                              style: blueTextStyle.copyWith(
-                                fontSize: 12,
-                                fontWeight: medium,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isAbsen = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/icon_absen_masuk_guru.png',
+                                width: 50,
+                                height: 50,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 9,
+                              ),
+                              Text(
+                                'Absen Masuk',
+                                style: blueTextStyle.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: medium,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/icon_tidak_hadir_guru.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Text(
-                              'Absen Masuk',
-                              style: blueTextStyle.copyWith(
-                                fontSize: 12,
-                                fontWeight: medium,
-                                color: Color(0xffE28F8F),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isAbsen = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/icon_tidak_hadir_guru.png',
+                                width: 50,
+                                height: 50,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 9,
+                              ),
+                              Text(
+                                'Absen Masuk',
+                                style: blueTextStyle.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: medium,
+                                  color: Color(0xffE28F8F),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/icon_keluar_guru.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Text(
-                              'Absen Masuk',
-                              style: greyTextStyle.copyWith(
-                                fontSize: 12,
-                                fontWeight: medium,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isAbsen = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/icon_keluar_guru.png',
+                                width: 50,
+                                height: 50,
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 9,
+                              ),
+                              Text(
+                                'Absen Masuk',
+                                style: greyTextStyle.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: medium,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
