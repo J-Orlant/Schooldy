@@ -112,7 +112,7 @@ class ProfilePageGuru extends StatelessWidget {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            // Navigator.pushNamed(context, '/rapot');
+            Navigator.pushNamed(context, '/laporan-kehadiran');
           },
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -158,7 +158,7 @@ class ProfilePageGuru extends StatelessWidget {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            // Navigator.pushNamed(context, '/jadwal');
+            Navigator.pushNamed(context, '/laporan-nilai');
           },
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -204,7 +204,7 @@ class ProfilePageGuru extends StatelessWidget {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/jadwal-guru');
+            // Navigator.pushNamed(context, '/jadwal-guru');
           },
           child: Container(
             padding: EdgeInsets.symmetric(

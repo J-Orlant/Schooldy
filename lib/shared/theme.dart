@@ -8,11 +8,16 @@ Color kGreyColor = Color(0xffc4c4c4);
 Color kBlackColor = Color(0xff000000);
 Color kTransparent = Colors.transparent;
 Color kCreamColor = Color(0xffFFDAC4);
+Color kWhiteBlue = Color(0xffC2E2F5);
 
 double defaultMargin = 24.0;
 
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: kBlackColor,
+);
+
+TextStyle kDarkBlueTexStyle = GoogleFonts.poppins(
+  color: kDarkBlue,
 );
 
 TextStyle blueTextStyle = GoogleFonts.poppins(

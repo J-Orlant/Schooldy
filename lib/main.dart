@@ -11,6 +11,8 @@ import 'package:kksi/ui/page/detail_notif_page.dart';
 import 'package:kksi/ui/page/detail_profil_page.dart';
 import 'package:kksi/ui/page/forgot_pass_page.dart';
 import 'package:kksi/ui/page/guru/detail_tugas_siswa.dart';
+import 'package:kksi/ui/page/guru/laporan_kehadiran_page.dart';
+import 'package:kksi/ui/page/guru/laporan_nilai_page.dart';
 import 'package:kksi/ui/page/guru/main_guru.dart';
 import 'package:kksi/ui/page/guru/program_tahunan_page.dart';
 import 'package:kksi/ui/page/jadwal_page.dart';
@@ -77,6 +79,8 @@ class MyApp extends StatelessWidget {
             // Guru
             ('/mainGuru'): (context) => MainGuru(),
             ('/program-tahunan'): (context) => ProgramTahunanPage(),
+            ('/laporan-nilai'): (context) => LaporanNilaiPage(),
+            ('/laporan-kehadiran'): (context) => LaporanKehadiranPage(),
             // Ortu
             ('/main-ortu'): (context) => MainOrtu(),
           },
