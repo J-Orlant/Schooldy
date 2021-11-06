@@ -7,6 +7,7 @@ import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/providers/camera_save.dart';
 import 'package:kksi/shared/theme.dart';
+import 'package:kksi/ui/page/siswa/absen_success.dart';
 import 'package:kksi/ui/widget/keterangan_item.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -73,7 +74,12 @@ class _AbsenPageState extends State<AbsenPage> {
                   onTap: () {
                     absensi.isAbsen = 'absen';
                     absensi.id = widget.aModels.id;
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AbsenSuccess(),
+                      ),
+                    );
                   },
                   child: Image.asset(
                     'assets/btn_ok.png',
@@ -100,7 +106,7 @@ class _AbsenPageState extends State<AbsenPage> {
             ),
             child: Center(
               child: Text(
-                'KS',
+                'JA',
                 style: whiteTextStyle.copyWith(
                   fontWeight: semiBold,
                 ),
@@ -109,7 +115,7 @@ class _AbsenPageState extends State<AbsenPage> {
           ),
           Expanded(
             child: Text(
-              'Kevin Saputra',
+              'Justin Anditiaman',
               style: blueTextStyle.copyWith(
                 fontWeight: semiBold,
                 fontSize: 16,

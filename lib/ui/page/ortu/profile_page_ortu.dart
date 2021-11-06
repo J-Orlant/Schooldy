@@ -5,8 +5,8 @@ import 'package:kksi/cubit/auth_cubit.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/statistik_tile.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class ProfilePageOrtu extends StatelessWidget {
+  const ProfilePageOrtu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'JA',
+                      'YA',
                       style: whiteTextStyle.copyWith(
                         fontWeight: semiBold,
                       ),
@@ -70,19 +70,13 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Justin Anditiaman',
+                        'Yusuf Andid',
                         style: blueTextStyle.copyWith(
                           fontWeight: semiBold,
                         ),
                       ),
                       Text(
-                        'NIS 0232438343',
-                        style: blueTextStyle.copyWith(
-                          fontSize: 10,
-                        ),
-                      ),
-                      Text(
-                        'kevinsaputra2618.rpl1@gmail.com',
+                        'yusuf@gmail.com',
                         style: greyTextStyle.copyWith(
                           fontSize: 10,
                         ),
@@ -90,18 +84,18 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/detail-profil');
-                  },
-                  child: Text(
-                    'Identitas Siswa',
-                    style: blueTextStyle.copyWith(
-                      fontSize: 10,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                )
+                // GestureDetector(
+                //   onTap: () {
+                //     Navigator.pushNamed(context, '/detail-profil');
+                //   },
+                //   child: Text(
+                //     'Identitas Anak',
+                //     style: blueTextStyle.copyWith(
+                //       fontSize: 10,
+                //       decoration: TextDecoration.underline,
+                //     ),
+                //   ),
+                // )
               ],
             )
           ],
@@ -172,7 +166,7 @@ class ProfilePage extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'Rapot',
+                  'Rapot Anak',
                   style: whiteTextStyle.copyWith(
                     fontWeight: semiBold,
                     fontSize: 12,

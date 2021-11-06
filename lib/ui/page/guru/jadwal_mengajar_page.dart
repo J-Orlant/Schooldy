@@ -1,17 +1,18 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kksi/models/jadwal_model.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/jadwal_item.dart';
 
-class JadwalPage extends StatefulWidget {
-  const JadwalPage({Key? key}) : super(key: key);
+class JadwalMengajarPage extends StatefulWidget {
+  const JadwalMengajarPage({Key? key}) : super(key: key);
 
   @override
-  State<JadwalPage> createState() => _JadwalPageState();
+  _JadwalMengajarPageState createState() => _JadwalMengajarPageState();
 }
 
-class _JadwalPageState extends State<JadwalPage> {
+class _JadwalMengajarPageState extends State<JadwalMengajarPage> {
   final CarouselController? _controller = new CarouselController();
   int _currentIndex = 0;
   List hari = [
@@ -109,12 +110,12 @@ class _JadwalPageState extends State<JadwalPage> {
 
     Widget cardGroupSenin() {
       return Column(
-        children: senin.map((data) {
+        children: seninGuru.map((data) {
           return JadwalItem(
             gambar: data.gambar,
             mapel: data.mapel,
-            guru: data.guru,
-            tugas: data.tugas.toString(),
+            guru: '',
+            tugas: data.kelas,
             waktu: data.waktu,
           );
         }).toList(),
@@ -123,12 +124,12 @@ class _JadwalPageState extends State<JadwalPage> {
 
     Widget cardGroupSelasa() {
       return Column(
-        children: selasa.map((data) {
+        children: selasaGuru.map((data) {
           return JadwalItem(
             gambar: data.gambar,
             mapel: data.mapel,
-            guru: data.guru,
-            tugas: data.tugas.toString(),
+            guru: '',
+            tugas: data.kelas,
             waktu: data.waktu,
           );
         }).toList(),

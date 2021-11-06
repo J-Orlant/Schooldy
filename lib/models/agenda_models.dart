@@ -37,6 +37,7 @@ final fakedata = [
     guru: 'DS',
     warna: Color(0xffFF738C),
     status: 'avaible',
+    waktu: 'Sedang Berlangsung',
   ),
   AgendaModels(
     id: 'agenda-tag-3',

@@ -8,6 +8,7 @@ class AgendaItem extends StatelessWidget {
   final String materi;
   final Color color;
   final String status;
+  final String time;
 
   const AgendaItem({
     Key? key,
@@ -17,6 +18,7 @@ class AgendaItem extends StatelessWidget {
     required this.materi,
     required this.color,
     required this.status,
+    required this.time,
   }) : super(key: key);
 
   @override
@@ -105,7 +107,7 @@ class AgendaItem extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '9:00 - 10.30',
+                      time,
                       style: greyTextStyle.copyWith(
                         fontSize: 12,
                         color: (status == 'absen')

@@ -9,6 +9,7 @@ class KalenderIitem extends StatelessWidget {
   final int index;
   final EdgeInsets margin;
   final bool isKegiatan;
+  final bool isHome;
   const KalenderIitem({
     Key? key,
     required this.date,
@@ -16,6 +17,7 @@ class KalenderIitem extends StatelessWidget {
     required this.index,
     this.isKegiatan = false,
     this.margin = EdgeInsets.zero,
+    this.isHome = false,
   }) : super(key: key);
 
   @override
@@ -74,7 +76,9 @@ class KalenderIitem extends StatelessWidget {
                     color: (index == kalender.currentIndex)
                         ? (isKegiatan)
                             ? kWhiteColor
-                            : kTransparent
+                            : (isHome)
+                                ? kDarkBlue
+                                : kTransparent
                         : kTransparent,
                     shape: BoxShape.circle,
                   ),

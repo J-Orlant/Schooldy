@@ -3,18 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
 import 'package:kksi/ui/page/siswa/absen_page.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'animation/custom_rect_tween.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({
+class HomePageOrtu extends StatelessWidget {
+  HomePageOrtu({
     Key? key,
   }) : super(key: key);
 
@@ -40,7 +37,7 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'JA',
+                    'YA',
                     style: primaryTextStyle.copyWith(
                       fontWeight: semiBold,
                       fontSize: 19,
@@ -120,7 +117,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Text(
-                'Justin Anditiaman',
+                'Yusuf Andi',
                 style: whiteTextStyle.copyWith(
                   fontWeight: semiBold,
                   fontSize: 22,
@@ -184,7 +181,7 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Statistik Tugas',
+                'Statistik Tugas Anak',
                 style: whiteTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: semiBold,
@@ -402,12 +399,24 @@ class HomePage extends StatelessWidget {
                       right: defaultMargin,
                       left: defaultMargin,
                     ),
-                    child: Text(
-                      'Senin, 09 Agustus',
-                      style: blackTextStyle.copyWith(
-                        fontWeight: semiBold,
-                        fontSize: 17,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Absensi Kehadiran Anak',
+                          style: blueTextStyle.copyWith(
+                            fontWeight: semiBold,
+                            fontSize: 17,
+                          ),
+                        ),
+                        Text(
+                          'Senin, 09 Agustus',
+                          style: blackTextStyle.copyWith(
+                            fontWeight: medium,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(
@@ -465,33 +474,27 @@ class _AgendaItemLoop extends StatelessWidget {
                           //     ),
                           //   ),
                           // );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AbsenPage(
-                                aModels: data,
-                              ),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => AbsenPage(
+                          //       aModels: data,
+                          //     ),
+                          //   ),
+                          // );
                         }
                       : () {}
                   : () {},
-              child: Hero(
-                tag: data.id,
-                createRectTween: (begin, end) {
-                  return CustomRectTween(begin: begin, end: end);
-                },
-                child: AgendaItem(
-                  id: data.id,
-                  profil: data.guru,
-                  mapel: data.mapel,
-                  materi: data.materi,
-                  color: data.warna,
-                  status: (absensi.id == data.id)
-                      ? absensi.isAbsen.toString()
-                      : data.status,
-                  time: data.waktu,
-                ),
+              child: AgendaItem(
+                id: data.id,
+                profil: data.guru,
+                mapel: data.mapel,
+                materi: data.materi,
+                color: data.warna,
+                status: (absensi.id == data.id)
+                    ? absensi.isAbsen.toString()
+                    : data.status,
+                time: data.waktu,
               ),
             ),
           );

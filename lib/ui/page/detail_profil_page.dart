@@ -28,7 +28,7 @@ class DetailProfilPage extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'KS',
+                  'JA',
                   style: whiteTextStyle.copyWith(
                     fontWeight: semiBold,
                   ),
@@ -36,7 +36,7 @@ class DetailProfilPage extends StatelessWidget {
               ),
             ),
             Text(
-              'kevinsaputra2618.rpl1@gmail.com',
+              'justin@gmail.com',
               style: blackTextStyle.copyWith(
                 fontSize: 12,
               ),
@@ -69,7 +69,7 @@ class DetailProfilPage extends StatelessWidget {
             ),
             DataDiriItem(
               title: 'Nama Lengkap Siswa',
-              data: 'Kevin Saputra',
+              data: 'Justin Anditiaman',
             ),
             DataDiriItem(
               title: 'Nomor induk',
@@ -106,7 +106,7 @@ class DetailProfilPage extends StatelessWidget {
             ),
             DataDiriItem(
               title: 'Alamat email',
-              data: 'kevinsaputra21@gmail.com',
+              data: 'justin@gmail.com',
               isSubtitle: true,
             ),
           ],

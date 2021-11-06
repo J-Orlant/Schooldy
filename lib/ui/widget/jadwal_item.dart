@@ -5,7 +5,7 @@ class JadwalItem extends StatelessWidget {
   final String gambar;
   final String mapel;
   final String guru;
-  final int tugas;
+  final String tugas;
   final String waktu;
 
   const JadwalItem({
@@ -59,7 +59,7 @@ class JadwalItem extends StatelessWidget {
                 ),
                 SizedBox(height: 6),
                 Text(
-                  'Create by $guru',
+                  (guru == '') ? '' : 'Create by $guru',
                   style: whiteTextStyle.copyWith(
                     fontSize: 10,
                   ),
@@ -77,7 +77,7 @@ class JadwalItem extends StatelessWidget {
                       width: 8,
                     ),
                     Text(
-                      tugas.toString() + ' Tugas',
+                      (guru == '') ? tugas : tugas + ' Tugas',
                       style: whiteTextStyle.copyWith(
                         fontSize: 10,
                       ),

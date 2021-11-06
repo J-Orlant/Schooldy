@@ -189,6 +189,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
                           kalender.isClicked = 0;
                         },
                         child: KalenderIitem(
+                          isHome: true,
                           date: 22,
                           day: 'Sen',
                           index: 0,
@@ -199,6 +200,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
                           kalender.isClicked = 1;
                         },
                         child: KalenderIitem(
+                          isHome: true,
                           date: 23,
                           day: 'Sel',
                           index: 1,
@@ -209,6 +211,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
                           kalender.isClicked = 2;
                         },
                         child: KalenderIitem(
+                          isHome: true,
                           date: 24,
                           day: 'Rab',
                           index: 2,
@@ -219,6 +222,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
                           kalender.isClicked = 3;
                         },
                         child: KalenderIitem(
+                          isHome: true,
                           date: 25,
                           day: 'Kam',
                           index: 3,
@@ -229,6 +233,7 @@ class _HomePageGuruState extends State<HomePageGuru> {
                           kalender.isClicked = 4;
                         },
                         child: KalenderIitem(
+                          isHome: true,
                           date: 26,
                           day: 'Jum',
                           index: 4,

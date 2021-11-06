@@ -14,6 +14,20 @@ class JadwalModel {
   });
 }
 
+class JadwalMengajarModel {
+  final String gambar;
+  final String mapel;
+  final String kelas;
+  final String waktu;
+
+  JadwalMengajarModel({
+    required this.gambar,
+    required this.mapel,
+    required this.kelas,
+    this.waktu = 'Pukul 10.30 - 12.00',
+  });
+}
+
 final senin = [
   JadwalModel(
     gambar: 'assets/image_jadwal_pbo.png',
@@ -52,5 +66,46 @@ final selasa = [
     mapel: 'Basis Data',
     guru: 'Riswan Hermawan',
     tugas: 20,
+  ),
+];
+
+final seninGuru = [
+  JadwalMengajarModel(
+    gambar: 'assets/image_jadwal_pbo.png',
+    mapel: 'Pemograman Berorientasi Object',
+    kelas: 'Kelas XI RPL 1',
+    waktu: 'Pukul 07.00 - 08.30',
+  ),
+  JadwalMengajarModel(
+    gambar: 'assets/image_jadwal_basdat.png',
+    mapel: 'Basis Data',
+    kelas: 'Kelas XI RPL 2',
+    waktu: 'Pukul 08.45 - 10.15',
+  ),
+  JadwalMengajarModel(
+    gambar: 'assets/image_jadwal_pbo.png',
+    mapel: 'Pemograman Berorientasi Object',
+    kelas: 'Kelas X RPL 1',
+    waktu: 'Pukul 10.30 - 12.00',
+  ),
+];
+final selasaGuru = [
+  JadwalMengajarModel(
+    gambar: 'assets/image_jadwal_pbo.png',
+    mapel: 'Pemograman Berorientasi Object',
+    kelas: 'Kelas XI RPL 3',
+    waktu: 'Pukul 07.00 - 08.30',
+  ),
+  JadwalMengajarModel(
+    gambar: 'assets/image_jadwal_basdat.png',
+    mapel: 'Basis Data',
+    kelas: 'Kelas XI RPL 1',
+    waktu: 'Pukul 08.45 - 10.15',
+  ),
+  JadwalMengajarModel(
+    gambar: 'assets/image_jadwal_android.png',
+    mapel: 'Pemograman Berorientasi Object',
+    kelas: 'Kelas X RPL 1',
+    waktu: 'Pukul 10.30 - 12.00',
   ),
 ];

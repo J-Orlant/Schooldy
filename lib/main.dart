@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/bloc/tab_cubit.dart';
 import 'package:kksi/cubit/auth_cubit.dart';
@@ -12,7 +11,7 @@ import 'package:kksi/providers/kalender_app.dart';
 import 'package:kksi/ui/page/detail_notif_page.dart';
 import 'package:kksi/ui/page/detail_profil_page.dart';
 import 'package:kksi/ui/page/forgot_pass_page.dart';
-import 'package:kksi/ui/page/guru/detail_tugas_siswa.dart';
+import 'package:kksi/ui/page/guru/jadwal_mengajar_page.dart';
 import 'package:kksi/ui/page/guru/laporan_kehadiran_page.dart';
 import 'package:kksi/ui/page/guru/laporan_nilai_page.dart';
 import 'package:kksi/ui/page/guru/kegiatan_page.dart';
@@ -99,6 +98,7 @@ class MyApp extends StatelessWidget {
             ('/laporan-nilai'): (context) => LaporanNilaiPage(),
             ('/laporan-kehadiran'): (context) => LaporanKehadiranPage(),
             ('/kegiatan-page'): (context) => KegiatanPage(),
+            ('/jadwal-mengajar'): (context) => JadwalMengajarPage(),
             // Ortu
             ('/main-ortu'): (context) => MainOrtu(),
           },

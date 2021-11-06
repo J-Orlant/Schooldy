@@ -204,7 +204,7 @@ class ProfilePageGuru extends StatelessWidget {
       return Expanded(
         child: GestureDetector(
           onTap: () {
-            // Navigator.pushNamed(context, '/jadwal-guru');
+            Navigator.pushNamed(context, '/jadwal-mengajar');
           },
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -272,8 +272,8 @@ class ProfilePageGuru extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/icon_jadwal.png',
-                  width: 16,
+                  'assets/icon_program_tahunan.png',
+                  width: 22,
                 ),
                 SizedBox(
                   height: 6,
