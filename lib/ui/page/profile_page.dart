@@ -1,13 +1,21 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/cubit/auth_cubit.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/widget/statistik_tile.dart';
+import 'package:kksi/ui/widget/line_titles.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     Widget appBar() {
@@ -111,30 +119,343 @@ class ProfilePage extends StatelessWidget {
 
     Widget statistik() {
       return Container(
+        width: double.infinity,
+        height: 182,
+        margin: EdgeInsets.only(
+          right: 5,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: 15,
+        ),
+        decoration: BoxDecoration(
+          color: kDarkBlue,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: LineChart(
+          LineChartData(
+            minX: 0,
+            maxX: 5,
+            minY: 0,
+            maxY: 100,
+            titlesData: LineTitles.getTitleData(),
+            gridData: FlGridData(
+              show: true,
+              getDrawingHorizontalLine: (value) {
+                return FlLine(
+                  color: kWhiteColor.withOpacity(0.1),
+                  strokeWidth: 1,
+                );
+              },
+              drawVerticalLine: false,
+            ),
+            borderData: FlBorderData(
+              show: true,
+              border: Border(
+                bottom: BorderSide(
+                  color: kWhiteColor.withOpacity(0.1),
+                ),
+              ),
+            ),
+            lineBarsData: [
+              LineChartBarData(
+                isCurved: true,
+                show: true,
+                dotData: FlDotData(show: true),
+                barWidth: 2,
+                colors: [
+                  kWhiteColor,
+                ],
+                // belowBarData: BarAreaData(
+                //   show: true,
+                //   gradientTo: Offset(0, 1),
+                //   colors: [
+                //     kWhiteColor,
+                //     kWhiteColor.withOpacity(0.2),
+                //   ],
+                // ),
+                spots: [
+                  FlSpot(0, 0),
+                  FlSpot(1, 60),
+                  FlSpot(2, 70),
+                  FlSpot(3, 80),
+                  FlSpot(4, 90),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget statistik2() {
+      return Container(
+        width: double.infinity,
+        height: 182,
+        margin: EdgeInsets.only(
+          right: 5,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: 15,
+        ),
+        decoration: BoxDecoration(
+          color: kDarkBlue,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: LineChart(
+          LineChartData(
+            minX: 0,
+            maxX: 5,
+            minY: 0,
+            maxY: 100,
+            titlesData: LineTitles.getTitleData(),
+            gridData: FlGridData(
+              show: true,
+              getDrawingHorizontalLine: (value) {
+                return FlLine(
+                  color: kWhiteColor.withOpacity(0.1),
+                  strokeWidth: 1,
+                );
+              },
+              drawVerticalLine: false,
+            ),
+            borderData: FlBorderData(
+              show: true,
+              border: Border(
+                bottom: BorderSide(
+                  color: kWhiteColor.withOpacity(0.1),
+                ),
+              ),
+            ),
+            lineBarsData: [
+              LineChartBarData(
+                isCurved: true,
+                show: true,
+                dotData: FlDotData(show: true),
+                barWidth: 2,
+                colors: [
+                  kWhiteColor,
+                ],
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    kWhiteColor,
+                    kWhiteColor.withOpacity(0.2),
+                  ],
+                ),
+                spots: [
+                  FlSpot(0, 0),
+                  FlSpot(1, 50),
+                  FlSpot(2, 90),
+                  FlSpot(3, 70),
+                  FlSpot(4, 90),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget statistik3() {
+      return Container(
+        width: double.infinity,
+        height: 182,
+        margin: EdgeInsets.only(
+          right: 5,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: 15,
+        ),
+        decoration: BoxDecoration(
+          color: kDarkBlue,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: LineChart(
+          LineChartData(
+            minX: 0,
+            maxX: 5,
+            minY: 0,
+            maxY: 100,
+            titlesData: LineTitles.getTitleData(),
+            gridData: FlGridData(
+              show: true,
+              getDrawingHorizontalLine: (value) {
+                return FlLine(
+                  color: kWhiteColor.withOpacity(0.1),
+                  strokeWidth: 1,
+                );
+              },
+              drawVerticalLine: false,
+            ),
+            borderData: FlBorderData(
+              show: true,
+              border: Border(
+                bottom: BorderSide(
+                  color: kWhiteColor.withOpacity(0.1),
+                ),
+              ),
+            ),
+            lineBarsData: [
+              LineChartBarData(
+                isCurved: true,
+                show: true,
+                dotData: FlDotData(show: true),
+                barWidth: 2,
+                colors: [
+                  kWhiteColor,
+                ],
+                // belowBarData: BarAreaData(
+                //   show: true,
+                //   gradientTo: Offset(0, 1),
+                //   colors: [
+                //     kWhiteColor,
+                //     kWhiteColor.withOpacity(0.2),
+                //   ],
+                // ),
+                spots: [
+                  FlSpot(0, 0),
+                  FlSpot(1, 40),
+                  FlSpot(2, 70),
+                  FlSpot(3, 80),
+                  FlSpot(4, 90),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget statistikKet() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 12,
+          bottom: 24,
+        ),
         child: Column(
           children: [
-            StatistikTile(
-              kelas: 'X',
-              item1: [135.0, true],
-              item2: [94.0, false],
-              item3: [50.0, false],
-              item4: [74.0, false],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 10,
+                  height: 10,
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: (_currentIndex == 0)
+                        ? kDarkBlue
+                        : kDarkBlue.withOpacity(0.25),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                Container(
+                  width: 10,
+                  height: 10,
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: (_currentIndex == 1)
+                        ? kDarkBlue
+                        : kDarkBlue.withOpacity(0.25),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                Container(
+                  width: 10,
+                  height: 10,
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: (_currentIndex == 2)
+                        ? kDarkBlue
+                        : kDarkBlue.withOpacity(0.25),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ],
             ),
-            StatistikTile(
-              kelas: 'XI',
-              item1: [135.0, false],
-              item2: [94.0, false],
-              item3: [140.0, true],
-              item4: [74.0, false],
-            ),
-            StatistikTile(
-              kelas: 'XI',
-              item1: [1.0, false],
-              item2: [1.0, false],
-              item3: [1.0, false],
-              item4: [1.0, false],
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 16),
+              padding: EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                color: kWhiteColor,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 1),
+                    blurRadius: 5,
+                    color: kBlackColor.withOpacity(0.25),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/icon_kenaikan.png',
+                        width: 20,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Kenaikan Nilai\n+ 25%',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 10,
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(
+                        'assets/icon_penurunan.png',
+                        width: 20,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Penurunan Nilai\n+ 25%',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 10,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
+        ),
+      );
+    }
+
+    Widget carousel() {
+      return CarouselSlider(
+        items: [
+          statistik(),
+          statistik2(),
+          statistik3(),
+        ],
+        options: CarouselOptions(
+          initialPage: _currentIndex,
+          aspectRatio: 1.6,
+          viewportFraction: 0.95,
+          scrollPhysics: BouncingScrollPhysics(),
+          enableInfiniteScroll: false,
+          onPageChanged: (index, reason) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
         ),
       );
     }
@@ -276,7 +597,18 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               height: 18,
             ),
-            statistik(),
+            Text(
+              'Statistik Nilai',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            carousel(),
+            statistikKet(),
             Row(
               children: [
                 rapot(),
