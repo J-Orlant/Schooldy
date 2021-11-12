@@ -32,7 +32,14 @@ class DetailKelasPage extends StatelessWidget {
                 judulTugas: 'Teks Pidato',
               ),
               TugasGuruTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => DetailTugasPage(),
+                    ),
+                  );
+                },
                 judulTugas: 'Teks Eksplanasi',
               ),
             ],
@@ -41,11 +48,25 @@ class DetailKelasPage extends StatelessWidget {
             bulan: 'November',
             tugas: [
               TugasGuruTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => DetailTugasPage(),
+                    ),
+                  );
+                },
                 judulTugas: 'Ulangan Harian 1',
               ),
               TugasGuruTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => DetailTugasPage(),
+                    ),
+                  );
+                },
                 judulTugas: 'Cerpen',
               ),
             ],
@@ -54,11 +75,25 @@ class DetailKelasPage extends StatelessWidget {
             bulan: 'Desember',
             tugas: [
               TugasGuruTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => DetailTugasPage(),
+                    ),
+                  );
+                },
                 judulTugas: 'Surat Lamaran',
               ),
               TugasGuruTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => DetailTugasPage(),
+                    ),
+                  );
+                },
                 judulTugas: 'Proposal',
               ),
             ],

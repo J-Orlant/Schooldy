@@ -10,7 +10,6 @@ class LaporanKehadiranPage extends StatefulWidget {
 
 class _LaporanKehadiranPageState extends State<LaporanKehadiranPage> {
   String? _chosenValue;
-  int _nomor = 0;
   List<String> siswa = [
     'Alzki S',
     'Bizka A',

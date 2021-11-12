@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/chat_page.dart';
 import 'package:kksi/ui/page/home_page.dart';
+import 'package:kksi/ui/page/ortu/chat_page.dart';
 import 'package:kksi/ui/page/ortu/home_page_ortu.dart';
 import 'package:kksi/ui/page/ortu/profile_page_ortu.dart';
 import 'package:kksi/ui/widget/custom_navigation_item.dart';
@@ -23,7 +23,7 @@ class _MainOrtuState extends State<MainOrtu> {
         case 0:
           return HomePageOrtu();
         case 2:
-          return ChatPage();
+          return ChatPageOrtu();
         case 3:
           return ProfilePageOrtu();
         default:

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/chat_dialog_item.dart';
 
-class RoomChat extends StatefulWidget {
-  RoomChat({Key? key}) : super(key: key);
+class RoomChatOrtu extends StatefulWidget {
+  RoomChatOrtu({Key? key}) : super(key: key);
 
   @override
-  _RoomChatState createState() => _RoomChatState();
+  _RoomChatOrtuState createState() => _RoomChatOrtuState();
 }
 
-class _RoomChatState extends State<RoomChat> {
+class _RoomChatOrtuState extends State<RoomChatOrtu> {
   TextEditingController textEditingController = TextEditingController();
   bool isEmpty = true;
 
@@ -52,7 +52,7 @@ class _RoomChatState extends State<RoomChat> {
             Expanded(
               child: Center(
                 child: Text(
-                  'Pak Budi',
+                  'Budi Santoso',
                   style: whiteTextStyle.copyWith(
                     fontSize: 15,
                     fontWeight: semiBold,
@@ -194,11 +194,11 @@ class _RoomChatState extends State<RoomChat> {
                   height: 24,
                 ),
                 ChatDialogItem(
-                  teks: 'Sore pak, saya ingin bertanya terkait tugas tadi pagi',
+                  teks: 'Selamat pagi pak budi',
                   waktu: '8.45',
                 ),
                 ChatDialogItem(
-                  teks: 'ya,ada apa ?',
+                  teks: 'Selamat Pagi juga pak',
                   waktu: '09.30',
                   isSender: false,
                 ),

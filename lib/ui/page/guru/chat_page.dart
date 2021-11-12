@@ -1,11 +1,14 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/page/animation/custom_rect_tween.dart';
 import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
+import 'package:kksi/ui/page/guru/room_chat.dart';
 import 'package:kksi/ui/widget/kontak_tile.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatPageGuru extends StatelessWidget {
+  const ChatPageGuru({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -105,60 +108,27 @@ class ChatPage extends StatelessWidget {
 
                 // TampilanChat(),
                 TampilanChat(
-                  profile: 'BS',
-                  background: kDarkBlue,
-                  username: 'Pak Budi',
-                  pesan: 'ya ada apa?',
+                  profile: 'YA',
+                  background: kCreamColor,
+                  username: 'Yusuf Andi (Ortu Justin)',
+                  pesan: 'Pagi',
                   pesanMasuk: '2',
                   isMasuk: false,
                   isPanjang: false,
+                  waktu: '11.00',
                   onTap: () {},
                 ),
 
                 TampilanChat(
                   profile: 'LS',
-                  background: kCreamColor,
-                  username: 'Bu Lesa',
-                  pesan: 'Selamat siang kevin tolong untuk segera...',
-                  pesanMasuk: '2',
+                  background: kDarkBlue,
+                  username: 'Justin Anditiaman (XII RPL 2)',
+                  pesan:
+                      'Sore pak, saya ingin bertanya terkait tugas tadi pagi',
+                  pesanMasuk: '1',
                   isMasuk: true,
                   isPanjang: true,
                   onTap: () {},
-                ),
-
-                TampilanChat(
-                  profile: 'BB',
-                  background: kPrimaryColor,
-                  username: 'Pak Bambang',
-                  pesan: 'Terimakasih kembali kevin',
-                  pesanMasuk: '1',
-                  isMasuk: true,
-                  isPanjang: false,
-                  onTap: () {},
-                ),
-
-                TampilanChat(
-                  profile: 'AE',
-                  background: kCreamColor,
-                  username: 'Bu Allea',
-                  pesan: 'Selamat pagi ibu saya ingin bertanya tent...',
-                  pesanMasuk: '2',
-                  isMasuk: false,
-                  isPanjang: true,
-                  onTap: () {},
-                ),
-
-                TampilanChat(
-                  profile: 'RY',
-                  background: kPrimaryColor,
-                  username: 'Pak Rayn',
-                  pesan: 'Ya,ada apa kevin?',
-                  pesanMasuk: '1',
-                  isMasuk: true,
-                  isPanjang: false,
-                  onTap: () {
-                    Navigator.pushNamed(context, '/main');
-                  },
                 ),
               ],
             ),
@@ -177,6 +147,7 @@ class TampilanChat extends StatelessWidget {
   final String pesanMasuk;
   final bool isMasuk;
   final bool isPanjang;
+  final String waktu;
   final Function() onTap;
 
   TampilanChat({
@@ -187,6 +158,7 @@ class TampilanChat extends StatelessWidget {
     required this.pesanMasuk,
     required this.isMasuk,
     required this.isPanjang,
+    this.waktu = '14.00',
     required this.onTap,
   });
 
@@ -202,7 +174,12 @@ class TampilanChat extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, '/room-chat');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RoomChatGuru(),
+                ),
+              );
             },
             child: Row(
               children: [
@@ -258,7 +235,7 @@ class TampilanChat extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      '14.00',
+                      waktu,
                       style: blackTextStyle.copyWith(
                         fontWeight: light,
                         fontSize: 13,
@@ -378,16 +355,12 @@ class _ChatPopUpState extends State<ChatPopUp> {
                     child: Column(
                       children: [
                         KontakTile(
-                          inisial: 'BS',
-                          nama: 'Pak Budi',
+                          inisial: 'JA',
+                          nama: 'Justin Anditiaman (XII RPL 2)',
                         ),
                         KontakTile(
-                          inisial: 'LS',
-                          nama: 'Bu Lesa',
-                        ),
-                        KontakTile(
-                          inisial: 'BB',
-                          nama: 'Bu Bambang',
+                          inisial: 'AC',
+                          nama: 'Antika Cahyani (XI MM 1)',
                         ),
                       ],
                     ),

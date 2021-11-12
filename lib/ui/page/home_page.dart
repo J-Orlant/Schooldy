@@ -3,13 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/animation/hero_dialog_route.dart';
 import 'package:kksi/ui/page/siswa/absen_page.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'animation/custom_rect_tween.dart';
 

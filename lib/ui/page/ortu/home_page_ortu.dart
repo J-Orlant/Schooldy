@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/providers/absensi_app.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/siswa/absen_page.dart';
 import 'package:kksi/ui/widget/agenda_item.dart';
 import 'package:kksi/models/agenda_models.dart';
 import 'package:kksi/ui/widget/jurusan_item.dart';
@@ -190,161 +187,156 @@ class HomePageOrtu extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              GestureDetector(
-                onTap: () {
-                  BlocProvider.of<PageCubit>(context).setPage(1);
-                },
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 8,
-                                animation: true,
-                                animationDuration: 800,
-                                percent: 70 / 100,
-                                backgroundColor: kWhiteColor.withOpacity(0.5),
-                                progressColor: kWhiteColor,
-                                circularStrokeCap: CircularStrokeCap.round,
-                                center: Text(
-                                  '70%',
-                                  style: whiteTextStyle.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: semiBold,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 12,
-                              ),
-                              Text(
-                                'Tugas',
-                                style: whiteTextStyle.copyWith(
-                                  fontWeight: medium,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 26,
-                          ),
-                          Column(
-                            children: [
-                              CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 8,
-                                animation: true,
-                                animationDuration: 800,
-                                percent: 30 / 100,
-                                backgroundColor: kWhiteColor.withOpacity(0.5),
-                                progressColor: Color(0xffDF7D7D),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                center: Text(
-                                  '30%',
-                                  style: whiteTextStyle.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: semiBold,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 12,
-                              ),
-                              Text(
-                                'Terlambat',
-                                style: whiteTextStyle.copyWith(
-                                  fontWeight: medium,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
+              Row(
+                children: [
+                  Flexible(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 100,
-                          height: 34,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 5,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kWhiteColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                '40',
-                                style: blackTextStyle.copyWith(
+                        Column(
+                          children: [
+                            CircularPercentIndicator(
+                              radius: 80.0,
+                              lineWidth: 8,
+                              animation: true,
+                              animationDuration: 800,
+                              percent: 70 / 100,
+                              backgroundColor: kWhiteColor.withOpacity(0.5),
+                              progressColor: kWhiteColor,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              center: Text(
+                                '70%',
+                                style: whiteTextStyle.copyWith(
                                   fontSize: 16,
                                   fontWeight: semiBold,
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              'Tugas',
+                              style: whiteTextStyle.copyWith(
+                                fontWeight: medium,
                               ),
-                              Expanded(
-                                child: Center(
-                                  child: Text(
-                                    'Selesai',
-                                    style: blackTextStyle.copyWith(
-                                      fontSize: 10,
-                                      fontWeight: medium,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          width: 118,
-                          height: 34,
-                          margin: EdgeInsets.only(
-                            top: 28,
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 5,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kWhiteColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                '120',
-                                style: blackTextStyle.copyWith(
+                        SizedBox(
+                          width: 26,
+                        ),
+                        Column(
+                          children: [
+                            CircularPercentIndicator(
+                              radius: 80.0,
+                              lineWidth: 8,
+                              animation: true,
+                              animationDuration: 800,
+                              percent: 30 / 100,
+                              backgroundColor: kWhiteColor.withOpacity(0.5),
+                              progressColor: Color(0xffDF7D7D),
+                              circularStrokeCap: CircularStrokeCap.round,
+                              center: Text(
+                                '30%',
+                                style: whiteTextStyle.copyWith(
                                   fontSize: 16,
                                   fontWeight: semiBold,
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              'Terlambat',
+                              style: whiteTextStyle.copyWith(
+                                fontWeight: medium,
                               ),
-                              Text(
-                                'Total Tugas',
-                                style: blackTextStyle.copyWith(
-                                  fontSize: 10,
-                                  fontWeight: medium,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 34,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kWhiteColor,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '40',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  'Selesai',
+                                  style: blackTextStyle.copyWith(
+                                    fontSize: 10,
+                                    fontWeight: medium,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 118,
+                        height: 34,
+                        margin: EdgeInsets.only(
+                          top: 28,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kWhiteColor,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '120',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Total Tugas',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 10,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

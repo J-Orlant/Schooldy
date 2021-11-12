@@ -90,7 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       Text(
-                        'kevinsaputra2618.rpl1@gmail.com',
+                        'justin@gmail.com',
                         style: greyTextStyle.copyWith(
                           fontSize: 10,
                         ),
@@ -165,14 +165,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 colors: [
                   kWhiteColor,
                 ],
-                // belowBarData: BarAreaData(
-                //   show: true,
-                //   gradientTo: Offset(0, 1),
-                //   colors: [
-                //     kWhiteColor,
-                //     kWhiteColor.withOpacity(0.2),
-                //   ],
-                // ),
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    kWhiteColor,
+                    kWhiteColor.withOpacity(0.2),
+                  ],
+                ),
                 spots: [
                   FlSpot(0, 0),
                   FlSpot(1, 60),
@@ -305,14 +305,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 colors: [
                   kWhiteColor,
                 ],
-                // belowBarData: BarAreaData(
-                //   show: true,
-                //   gradientTo: Offset(0, 1),
-                //   colors: [
-                //     kWhiteColor,
-                //     kWhiteColor.withOpacity(0.2),
-                //   ],
-                // ),
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    kWhiteColor,
+                    kWhiteColor.withOpacity(0.2),
+                  ],
+                ),
                 spots: [
                   FlSpot(0, 0),
                   FlSpot(1, 40),

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/bloc/page_cubit.dart';
 import 'package:kksi/shared/theme.dart';
-import 'package:kksi/ui/page/chat_page.dart';
+import 'package:kksi/ui/page/guru/chat_page.dart';
 import 'package:kksi/ui/page/guru/home_page_guru.dart';
 import 'package:kksi/ui/page/guru/kelas_page.dart';
 import 'package:kksi/ui/page/guru/profile_page_guru.dart';
 import 'package:kksi/ui/page/home_page.dart';
-import 'package:kksi/ui/page/profile_page.dart';
 import 'package:kksi/ui/widget/custom_navigation_item.dart';
 
 class MainGuru extends StatefulWidget {
@@ -27,7 +26,7 @@ class _MainGuruState extends State<MainGuru> {
         case 1:
           return KelasPage();
         case 2:
-          return ChatPage();
+          return ChatPageGuru();
         case 3:
           return ProfilePageGuru();
         default:

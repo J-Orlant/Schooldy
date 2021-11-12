@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kksi/cubit/auth_cubit.dart';
-import 'package:kksi/models/user.dart';
 import 'package:kksi/shared/theme.dart';
 import 'package:kksi/ui/widget/custom_text_button.dart';
 import 'package:kksi/ui/widget/custom_text_form.dart';
@@ -75,8 +73,6 @@ class SignInPage extends StatelessWidget {
               SizedBox(
                 height: 26,
               ),
-              // TODO: Bug di password eye icon
-
               CustomTextForm(
                 hint: 'Password',
                 obsecure: true,

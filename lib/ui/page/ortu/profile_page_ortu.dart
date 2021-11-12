@@ -78,7 +78,7 @@ class _ProfilePageOrtuState extends State<ProfilePageOrtu> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Yusuf Andid',
+                        'Yusuf Andi',
                         style: blueTextStyle.copyWith(
                           fontWeight: semiBold,
                         ),
@@ -159,14 +159,14 @@ class _ProfilePageOrtuState extends State<ProfilePageOrtu> {
                 colors: [
                   kWhiteColor,
                 ],
-                // belowBarData: BarAreaData(
-                //   show: true,
-                //   gradientTo: Offset(0, 1),
-                //   colors: [
-                //     kWhiteColor,
-                //     kWhiteColor.withOpacity(0.2),
-                //   ],
-                // ),
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    kWhiteColor,
+                    kWhiteColor.withOpacity(0.2),
+                  ],
+                ),
                 spots: [
                   FlSpot(0, 0),
                   FlSpot(1, 60),
@@ -299,14 +299,14 @@ class _ProfilePageOrtuState extends State<ProfilePageOrtu> {
                 colors: [
                   kWhiteColor,
                 ],
-                // belowBarData: BarAreaData(
-                //   show: true,
-                //   gradientTo: Offset(0, 1),
-                //   colors: [
-                //     kWhiteColor,
-                //     kWhiteColor.withOpacity(0.2),
-                //   ],
-                // ),
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradientTo: Offset(0, 1),
+                  colors: [
+                    kWhiteColor,
+                    kWhiteColor.withOpacity(0.2),
+                  ],
+                ),
                 spots: [
                   FlSpot(0, 0),
                   FlSpot(1, 40),
