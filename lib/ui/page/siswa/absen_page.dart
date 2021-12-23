@@ -67,21 +67,44 @@ class _AbsenPageState extends State<AbsenPage> {
                   fontSize: 18,
                 ),
               ),
-              Consumer<Absensi>(
-                builder: (context, absensi, _) => GestureDetector(
-                  onTap: () {
-                    absensi.isAbsen = 'absen';
-                    absensi.id = widget.aModels.id;
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AbsenSuccess(),
-                      ),
-                    );
-                  },
-                  child: Image.asset(
-                    'assets/btn_ok.png',
-                    width: 30,
+              Consumer<CameraSave>(
+                builder: (context, camerasave, _) => Consumer<Absensi>(
+                  builder: (context, absensi, _) => GestureDetector(
+                    onTap: () {
+                      if (_currentIndex == 1 || _currentIndex == 2) {
+                        if (camerasave.capturedImage.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('Absen Gagal, Harap memberikan bukti'),
+                              backgroundColor: Colors.red.shade200,
+                            ),
+                          );
+                        } else {
+                          absensi.isAbsen = 'absen';
+                          absensi.id = widget.aModels.id;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AbsenSuccess(),
+                            ),
+                          );
+                        }
+                      } else {
+                        absensi.isAbsen = 'absen';
+                        absensi.id = widget.aModels.id;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AbsenSuccess(),
+                          ),
+                        );
+                      }
+                    },
+                    child: Image.asset(
+                      'assets/btn_ok.png',
+                      width: 30,
+                    ),
                   ),
                 ),
               ),
